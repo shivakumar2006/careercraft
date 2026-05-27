@@ -3,13 +3,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addLog, setRunning, setDone, setError, reset } from '../store/careerSlice'
 import Terminal from '../components/Terminal'
 import FileViewer from '../components/FileViewer'
+import { api } from '../store/api'
 
 export default function Analyze() {
     const dispatch = useDispatch()
     const { isRunning, isDone, logs } = useSelector(s => s.career)
     const [jd, setJd] = useState('')
+
+    // const [analyzeMutation] = useAnalyzeMutation();
+
     const [company, setCompany] = useState('')
     const [companyOrg, setCompanyOrg] = useState('')
+
+    console.log("api key: ", import.meta.env)
+    console.log("api key : ", import.meta.env.VITE_BACKEND_API_KEY)
 
     const handleRun = async () => {
         if (!jd.trim() || !company.trim()) return
@@ -19,7 +26,7 @@ export default function Analyze() {
         dispatch(addLog(`📌 Target company: ${company}`))
 
         try {
-            const res = await fetch('http://localhost:8000/analyze', {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_API_KEY}/analyze`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ jd, company, company_org: companyOrg }),
@@ -36,12 +43,19 @@ export default function Analyze() {
                     try {
                         const data = JSON.parse(line)
                         if (data.type === 'log') dispatch(addLog(data.msg))
-                        if (data.type === 'done') dispatch(setDone({ files: data.files, analysis: data.analysis }))
+                        if (data.type === 'done') {
+                            dispatch(setDone({ files: data.files, analysis: data.analysis }))
+
+                            dispatch(setRunning(false))
+
+                            dispatch(api.util.invalidateTags(["Files"]))
+                        }
                         if (data.type === 'error') dispatch(setError(data.msg))
                     } catch { }
                 }
             }
         } catch (e) {
+            dispatch(setRunning(false))
             dispatch(setError(e.message))
         }
     }

@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { setActiveFile, setFileContent } from '../store/careerSlice'
+import { setActiveFile } from '../store/careerSlice'
+import { useGetFilesContentQuery, useGetFilesQuery } from '../store/api'
 
 const FILE_META = {
     resume: { icon: '📄', color: '#7c6ef7', label: 'Resume', desc: 'Tailored HTML resume' },
@@ -23,17 +25,32 @@ function formatSize(bytes) {
 
 export default function FileViewer() {
     const dispatch = useDispatch()
-    const { files, activeFile, fileContent } = useSelector(s => s.career)
+    const { activeFile } = useSelector(s => s.career)
+    const { data, isLoading } = useGetFilesQuery();
 
-    const openFile = async (filename) => {
+    const [selectedFile, setSelectedFile] = useState(null)
+
+    const {
+        data: fileData
+    } = useGetFilesContentQuery(selectedFile, {
+        skip: !selectedFile
+    })
+
+    const openFile = (filename) => {
+
         dispatch(setActiveFile(filename))
+
+        setSelectedFile(filename)
+
         if (filename.endsWith('.html')) {
-            window.open(`http://localhost:8000/preview/${filename}`, '_blank')
+
+            window.open(
+                `${import.meta.env.VITE_BACKEND_API_KEY}/preview/${filename}`,
+                '_blank'
+            )
+
             return
         }
-        const res = await fetch(`http://localhost:8000/files/${filename}`)
-        const data = await res.json()
-        dispatch(setFileContent(data.content))
     }
 
     return (
@@ -57,12 +74,12 @@ export default function FileViewer() {
                     fontSize: '11px', padding: '3px 10px', borderRadius: '20px',
                     background: 'rgba(124,110,247,0.15)', color: '#a89cf8',
                     border: '1px solid rgba(124,110,247,0.25)', fontFamily: 'JetBrains Mono',
-                }}>{files.length} files</span>
+                }}>{data?.files.length} files</span>
             </div>
 
             {/* File list */}
             <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {files.map((file, i) => {
+                {data?.files.map((file, i) => {
                     const meta = getFileMeta(typeof file === 'string' ? file : file.name)
                     const filename = typeof file === 'string' ? file : file.name
                     const isActive = activeFile === filename
@@ -107,7 +124,7 @@ export default function FileViewer() {
             </div>
 
             {/* Text content preview */}
-            {fileContent && activeFile && !activeFile.endsWith('.html') && (
+            {fileData?.content && activeFile && !activeFile.endsWith('.html') && (
                 <div style={{
                     margin: '0 16px 16px', padding: '14px', borderRadius: '10px',
                     background: 'rgba(4,4,10,0.9)', border: '1px solid rgba(26,26,48,0.8)',
@@ -120,7 +137,7 @@ export default function FileViewer() {
                         fontSize: '12px', color: '#8888aa', fontFamily: 'JetBrains Mono',
                         whiteSpace: 'pre-wrap', wordBreak: 'break-word',
                         overflowY: 'auto', flex: 1, lineHeight: 1.7,
-                    }}>{fileContent}</pre>
+                    }}>{fileData?.content}</pre>
                 </div>
             )}
         </div>

@@ -7,7 +7,7 @@ export default function Terminal() {
 
     useEffect(() => {
         bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-    }, [logs])
+    }, [logs, isRunning])
 
     const getLogColor = (log) => {
         if (log.startsWith('✅')) return '#1ddf8a'
@@ -67,7 +67,7 @@ export default function Terminal() {
                 )}
 
                 {logs.map((log, i) => (
-                    <div key={i} className="terminal-line" style={{ animationDelay: `${i * 0.05}s` }}>
+                    <div key={i} className="terminal-line" style={{ animationDelay: `${Math.min(i * 0.03, 0.5)}s` }}>
                         <span className="terminal-prompt">❯</span>
                         <span style={{ color: getLogColor(log) }}>{log}</span>
                     </div>
