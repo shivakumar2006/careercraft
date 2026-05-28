@@ -183,6 +183,30 @@ async def preview_file(filename: str):
         return {"error": "File not found"}
     return FileResponse(path, media_type="text/html")
 
+class ChatRequest(BaseModel):
+    message: str
+    history: list = []
+
+@app.post("/chat")
+async def chat_endpoint(req: ChatRequest):
+    """
+    Chat with CareerCraft AI agent.
+    Uses Coral SQL to fetch real-time GitHub + Notion data.
+    """
+    try:
+        response = await asyncio.get_event_loop().run_in_executor(
+            None, agent_chat, req.message, req.history
+        )
+        return {
+            "response": response,
+            "status": "ok"
+        }
+    except Exception as e:
+        return {
+            "response": f"Error: {str(e)}",
+            "status": "error"
+        }
+
 
 @app.get("/health")
 async def health():

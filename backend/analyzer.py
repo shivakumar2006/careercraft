@@ -18,25 +18,30 @@ load_dotenv()
 
 client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 GITHUB_USERNAME = os.getenv("GITHUB_USERNAME", "shivakumar2006")
-model = "claude-sonnet-4-6"
+MODEL = "claude-sonnet-4-6"
 
 # analyze profile 
 def analyze_profile() -> dict:
     """Fetch developer profile from GitHub + Notion via Coral"""
     repos = get_user_repos(GITHUB_USERNAME)
     languages = get_user_languages(GITHUB_USERNAME)
-    activity = get_recent_activity(GITHUB_USERNAME)
-    prs = get_github_prs(GITHUB_USERNAME)
-    commits = get_github_commits(GITHUB_USERNAME)
+    # activity = get_recent_activity(GITHUB_USERNAME)
+    # prs = get_github_prs(GITHUB_USERNAME)
+    # commits = get_github_commits(GITHUB_USERNAME)
     notion = get_notion_pages()
+
+    # commits = []
+    # if repos:
+    #     commits = get_github_commits(GITHUB_USERNAME, repos[0]['name'])
 
     return {
         "repos": repos,
         "languages": languages,
-        "activity": activity,
-        "prs": prs,
-        "commits": commits,
         "notion": notion,
+        "github_username": GITHUB_USERNAME,
+        # "activity": activity,
+        # "prs": prs,
+        # "commits": commits,
     }
 
 # analysis 
@@ -75,8 +80,8 @@ Notion Pages: {json.dumps(profile['notion'][:5], indent=2)}
 Be specific, reference actual repo names, and make the prep plan actionable with checkbox tasks."""
 
     response = client.messages.create(
-        model = Model,
-        max_token = 4096,
+        model = MODEL,
+        max_tokens = 4096,
         messages = [{"role": "user", "content": prompt}]
     )
     return response.content[0].text
@@ -108,13 +113,13 @@ Design requirements:
 Return ONLY a complete valid HTML file. No markdown fences."""
 
     response = client.messages.create(
-        model = Model,
+        model = MODEL,
         max_tokens = 8096,
         messages = [{"role": "user", "content": prompt}]
     )
     return response.content[0].text
 
-def generate_cover_letter(js: str, profile: dict, analysis: str) -> str: 
+def generate_cover_letter(jd: str, profile: dict, analysis: str) -> str: 
     """Generate personalized cover letter"""
     prompt = f"""Write a compelling, genuine cover letter for this job application.
  
@@ -134,7 +139,7 @@ Requirements:
 Return plain text only, no markdown."""
 
     response = client.messages.create(
-        model = Model,
+        model = MODEL,
         max_tokens = 2000,
         messages = [{"role": "user", "content": prompt}]
     )
@@ -160,56 +165,47 @@ Hint: [2-3 sentence answer strategy]
  
 Number them 1-15. Be specific to this role."""
  
-    response = client.message.create(
-        model = Model,
+    response = client.messages.create(
+        model = MODEL,
         max_tokens = 2000,
         messages = [{"role": "user", "content": prompt}]
     )
     return response.content[0].text
 
-def generate_dashboard(company: str, jd: str, analysis: str, cover_letter: str, interview_questions: str, profile: dict) -> str: 
-    """Generate interactive HTML career dashboard"""
-    prompt = f"""Create a complete, stunning, interactive single-file HTML career dashboard.
- 
+def generate_dashboard(company: str, jd: str, analysis: str, cover_letter: str, interview_questions: str, profile: dict) -> str:
+    # Prompt chhota karo
+    prompt = f"""Create complete interactive HTML dashboard.
+
 Company: {company}
 Candidate: {profile['github_username']}
-Top repos: {[r['name'] for r in profile['repos'][:8]]}
-Languages: {[l['language'] for l in profile['languages'][:5]]}
-Analysis: {analysis[:2000]}
-Cover letter: {cover_letter[:800]}
-Interview questions (first 8): {interview_questions[:1200]}
- 
-Required sections:
-1. Fixed navbar with CareerCraft logo + company name + match score pill
-2. Hero — company name, role title, match score ring (animated SVG), verdict
-3. Skill gap visualizer — matched skills (green bars) + missing skills (red tags)
-4. 30-day prep plan — 4 week tabs, clickable checkboxes that persist via localStorage
-5. Interview questions — accordion with category badges (Technical/Behavioral/System Design)
-6. Cover letter — formatted card with copy-to-clipboard button
- 
-Design:
-- Background: #0a0a0f
-- Cards: #0f0f1c with border #1a1a30
-- Accent: #7c6ef7 (purple-indigo)
-- Green: #1ddf8a, Red: #ff4d6a, Cyan: #22d9f3
-- Font: Inter from Google Fonts
-- JetBrains Mono for code/mono elements
-- Smooth animations on load (fadeUp)
-- Animated score ring (SVG stroke-dashoffset)
-- Hover effects on all cards
-- Mobile responsive grid
- 
-Return ONLY complete valid HTML with embedded CSS and JS. No markdown."""
- 
+Repos: {[r['name'] for r in profile['repos'][:6]]}
+Languages: {[l['language'] for l in profile['languages'][:4]]}
+Analysis: {analysis[:1500]}
+Cover letter: {cover_letter[:500]}
+Questions: {interview_questions[:800]}
+
+Sections: navbar, hero with score ring, skill bars, 4-week prep checklist with localStorage, interview accordion, cover letter with copy button.
+
+Design: bg #0a0a0f, accent #7c6ef7, green #1ddf8a, Inter font.
+Return ONLY complete HTML."""
+
     response = client.messages.create(
-        model = Model,
-        max_tokens = 8096,
-        messages = [{"role": "user", "content": prompt}]
+        model=MODEL,
+        max_tokens=8096,
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ]
     )
+    
+    result = response.content[0].text
+    if not result.startswith("<!DOCTYPE"):
+        result = "<!DOCTYPE html>" + result
+    return result
 
-    return response.content[0].text
-
-# save files 
+# save files ₹
 def save_all_files(company: str, resume: str, cover_letter: str, interview_questions: str, dashboard: str) -> list[str]: 
     """Save all generated files to output directory"""
     import os 

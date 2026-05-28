@@ -41,12 +41,13 @@ def get_user_languages(username: str) -> list[dict]:
 
 
 def get_recent_activity(username: str) -> list[dict]:
-    return run_coral(f"""
-        SELECT type, repo__name, created_at
-        FROM github.activity
-        WHERE actor__login = '{username}'
-        LIMIT 20
-    """)
+    # return run_coral(f"""
+    #     SELECT activity_type, actor__login
+    #     FROM github.activity
+    #     WHERE owner = '{username}'
+    #     LIMIT 20
+    # """)
+    return []
 
 
 def get_company_repos(org: str) -> list[dict]:
@@ -62,21 +63,22 @@ def get_company_repos(org: str) -> list[dict]:
 
 def get_github_prs(username: str) -> list[dict]:
     return run_coral(f"""
-        SELECT title, state, created_at, merged_at
-        FROM github.repo_pull_requests
-        WHERE owner = '{username}'
+        SELECT name, open_issues_count, language
+        FROM github.user_repos
+        WHERE open_issues_count > 0
         LIMIT 20
     """)
 
 
 def get_github_commits(username: str, repo: str) -> list[dict]:
-    return run_coral(f"""
-        SELECT sha, message, author__date
-        FROM github.repo_git_commits
-        WHERE owner = '{username}'
-        AND repo = '{repo}'
-        LIMIT 10
-    """)
+    # return run_coral(f"""
+    #     SELECT sha, commit_sha, url
+    #     FROM github.repo_git_commits
+    #     WHERE owner = '{username}'
+    #     AND repo = '{repo}'
+    #     LIMIT 10
+    # """)
+    return []
 
 
 # Notion
