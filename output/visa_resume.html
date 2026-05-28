@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivakumar | Software Engineer – Visa Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --card-hover: #1c2333;
+    --border: #30363d;
+    --blue: #58a6ff;
+    --green: #3fb950;
+    --purple: #bc8cff;
+    --orange: #f0883e;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--purple), var(--green));
+  }
+
+  .header-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .header-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+
+  .header-role {
+    font-size: 1rem;
+    color: var(--muted);
+    font-family: var(--mono);
+    margin-bottom: 1rem;
+  }
+
+  .header-role span { color: var(--green); }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .contact-row a {
+    color: var(--blue);
+    text-decoration: none;
+    font-family: var(--mono);
+    transition: color 0.2s;
+  }
+
+  .contact-row a:hover { color: var(--purple); }
+
+  /* ── Match Score Badge ── */
+  .match-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    min-width: 140px;
+    text-align: center;
+  }
+
+  .match-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  .match-number {
+    font-size: 2.8rem;
+    font-weight: 700;
+    font-family: var(--mono);
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .match-total {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  .match-bar {
+    width: 100%;
+    height: 5px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 0.4rem;
+  }
+
+  .match-bar-fill {
+    height: 100%;
+    width: 54%;
+    background: linear-gradient(90deg, var(--orange), var(--purple));
+    border-radius: 999px;
+    animation: fillBar 1.2s ease forwards;
+  }
+
+  @keyframes fillBar {
+    from { width: 0; }
+    to { width: 54%; }
+  }
+
+  .match-role-tag {
+    font-size: 0.65rem;
+    font-family: var(--mono);
+    color: var(--blue);
+    margin-top: 0.25rem;
+  }
+
+  /* ── Section ── */
+  section {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-weight: 500;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem 1.5rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    background: var(--card-hover);
+    border-color: #484f58;
+    transform: translateY(-2px);
+  }
+
+  /* ── Summary ── */
+  .summary-card {
+    composes: card;
+  }
+
+  .summary-text {
+    color: #c9d1d9;
+    font-size: 0.93rem;
+    line-height: 1.75;
+  }
+
+  .summary-text strong {
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  /* ── Skills ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-group {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+
+  .skill-group:hover {
+    background: var(--card-hover);
+    border-color: #484f58;
+    transform: translateY(-2px);
+  }
+
+  .skill-group-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.7rem;
+    font-family: var(--mono);
+    font-weight: 600;
+  }
+
+  .skill-group-title.blue { color: var(--blue); }
+  .skill-group-title.green { color: var(--green); }
+  .skill-group-title.purple { color: var(--purple); }
+  .skill-group-title.orange { color: var(--orange); }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  .tag-blue { background: rgba(88,166,255,0.12); color: var(--blue); border: 1px solid rgba(88,166,255,0.2); }
+  .tag-green { background: rgba(63,185,80,0.12); color: var(--green); border: 1px solid rgba(63,185,80,0.2); }
+  .tag-purple { background: rgba(188,140,255,0.12); color: var(--purple); border: 1px solid rgba(188,140,255,0.2); }
+  .tag-orange { background: rgba(240,136,62,0.12); color: var(--orange); border: 1px solid rgba(240,136,62,0.2); }
+  .tag-muted { background: rgba(139,148,158,0.1); color: var(--muted); border: 1px solid rgba(139,148,158,0.15); }
+
+  /* ── Language Bar ── */
+  .lang-bars {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin-top: 1rem;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .lang-bars:hover {
+    background: var(--card-hover);
+    border-color: #484f58;
+  }
+
+  .lang-bar-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    font-family: var(--mono);
+    margin-bottom: 0.9rem;
+  }
+
+  .lang-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .lang-name {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    width: 95px;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+
+  .lang-track {
+    flex: 1;
+    height: 7px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .lang-fill {
+    height: 100%;
+    border-radius: 999px;
+    animation: grow 1.2s ease forwards;
+    transform-origin: left;
+  }
+
+  @keyframes grow {
+    from { width: 0 !important; }
+  }
+
+  .lang-count {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    width: 50px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ── Projects ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem 1.4rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 3px 0 0 3px;
+    transition: opacity 0.2s;
+    opacity: 0.7;
+  }
+
+  .project-card.accent-blue::after { background: var(--blue); }
+  .project-card.accent-green::after { background: var(--green); }
+  .project-card.accent-purple::after { background: var(--purple); }
+
+  .project-card:hover {
+    background: var(--card-hover);
+    border-color: #484f58;
+    transform: translateY(-3px);
+  }
+
+  .project-name {
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--blue);
+  }
+
+  .project-card.accent-green .project-name { color: var(--green); }
+  .project-card.accent-purple .project-name { color: var(--purple); }
+
+  .project-desc {
+    font-size: 0.82rem;
+    color: #c9d1d9;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.3rem;
+  }
+
+  /* ── Experience & Education ── */
+  .timeline-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin-bottom: 1rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+
+  .timeline-item:hover {
+    background: var(--card-hover);
+    border-color: #484f58;
+    transform: translateY(-2px);
+  }
+
+  .timeline-item:last-child { margin-bottom: 0; }
+
+  .tl-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  .tl-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .tl-org {
+    color: var(--blue);
+    font-size: 0.85rem;
+    font-family: var(--mono);
+  }
+
+  .tl-date {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .tl-desc {
+    font-size: 0.83rem;
+    color: #8b949e;
+    line-height: 1.65;
+    margin-top: 0.5rem;
+  }
+
+  .tl-desc ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .tl-desc ul li::before {
+    content: '▸ ';
+    color: var(--blue);
+    font-size: 0.75rem;
+  }
+
+  /* ── Achievements ── */
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .ach-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    text-align: center;
+  }
+
+  .ach-card:hover {
+    background: var(--card-hover);
+    border-color: #484f58;
+    transform: translateY(-2px);
+  }
+
+  .ach-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .ach-value {
+    font-family: var(--mono);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .ach-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .header-grid { grid-template-columns: 1fr; }
+    .match-badge { flex-direction: row; min-width: unset; width: 100%; justify-content: space-between; }
+    .match-number { font-size: 2rem; }
+    .header-name { font-size: 1.7rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .achievements-grid { grid-template-columns: 1fr 1fr; }
+    .page { padding: 1rem 1rem 3rem; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; color: #111; font-size: 12px; }
+    .page { max-width: 100%; padding: 0.5rem 1rem; }
+    header, .card, .skill-group, .project-card, .timeline-item, .ach-card, .lang-bars {
+      background: #f9f9f9 !important;
+      border-color: #ddd !important;
+      box-shadow: none !important;
+      break-inside: avoid;
+    }
+    header::before { display: none; }
+    * { transform: none !important; animation: none !important; }
+    .header-name { -webkit-text-fill-color: #1a1a2e; background: none; color: #1a1a2e; }
+    .section-title, .tl-org, .project-name { color: #2563eb !important; }
+    .muted, .tl-date, .tl-desc, .lang-count, .ach-label { color: #555 !important; }
+    .lang-fill { animation: none !important; }
+    a { color: #2563eb !important; text-decoration: none; }
+    .match-bar-fill { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══════════════ HEADER ══════════════ -->
+  <header>
+    <div class="header-grid">
+      <div>
+        <h1 class="header-name">Shivakumar</h1>
+        <p class="header-role">// <span>Software Engineer</span> · Backend & AI Tooling</p>
+        <div class="contact-row">
+          <a href="https://github.com/shivakumar2006" target="_blank">⌥ github.com/shivakumar2006</a>
+          <span>📍 India</span>
+          <span>🎯 Applying → Visa Inc.</span>
+        </div>
+      </div>
+      <div class="match-badge">
+        <span class="match-label">Match Score</span>
+        <span class="match-number">54</span>
+        <span class="match-total">/ 100</span>
+        <div class="match-bar"><div class="match-bar-fill"></div></div>
+        <span class="match-role-tag">Visa · SWE</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════ SUMMARY ══════════════ -->
+  <section>
+    <div class="section-header">
+      <span class="section-title">Summary</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card">
+      <p class="summary-text">
+        Passionate software developer with a strong foundation in <strong>JavaScript (45 repos)</strong> and growing expertise in <strong>Go (13 repos)</strong> — the primary backend language at Visa Inc. Experienced in building AI-powered applications including an <strong>AI code reviewer</strong>, <strong>AI diagnosis app</strong>, and an <strong>AI interior design tool</strong>, demonstrating the ability to integrate modern LLM capabilities into real products. Actively participates in <strong>hackathons</strong> through HackIndia, reinforcing collaborative engineering under pressure. Seeking to bring clean, maintainable code and a fast-learning mindset to Visa's backend engineering teams.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════ SKILLS ══════════════ -->
+  <section>
+    <div class="section-header">
+      <span class="section-title">Skills</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title blue">Backend Languages</div>
+        <div class="skill-tags">
+          <span class="tag tag-blue">Go</span>
+          <span class="tag tag-blue">JavaScript</span>
+          <span class="tag tag-blue">TypeScript</span>
+          <span class="tag tag-blue">Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title green">Frontend & Web</div>
+        <div class="skill-tags">
+          <span class="tag tag-green">HTML5</span>
+          <span class="tag tag-green">CSS3</span>
+          <span class="tag tag-green">React</span>
+          <span class="tag tag-green">Node.js</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title purple">AI & Tooling</div>
+        <div class="skill-tags">
+          <span class="tag tag-purple">AI Integration</span>
+          <span class="tag tag-purple">Code Review AI</span>
+          <span class="tag tag-purple">LLM APIs</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title orange">Engineering Practices</div>
+        <div class="skill-tags">
+          <span class="tag tag-orange">REST APIs</span>
+          <span class="tag tag-orange">Git</span>
+          <span class="tag tag-orange">Hackathons</span>
+          <span class="tag tag-orange">Code Reviews</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Language Bars -->
+    <div class="lang-bars">
+      <div class="lang-bar-label">GitHub Language Breakdown</div>
+      <div class="lang-row">
+        <span class="lang-name">JavaScript</span>
+        <div class="lang-track"><div class="lang-fill" style="width:62%; background: linear-gradient(90deg, #f0db4f, #f0883e);"></div></div>
+        <span class="lang-count">45 repos</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">Go</span>
+        <div class="lang-track"><div class="lang-fill" style="width:28%; background: linear-gradient(90deg, #00acd7, #58a6ff);"></div></div>
+        <span class="lang-count">13 repos</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">HTML</span>
+        <div class="lang-track"><div class="lang-fill" style="width:10%; background: linear-gradient(90deg, #e34c26, #f0883e);"></div></div>
+        <span class="lang-count">5 repos</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">TypeScript</span>
+        <div class="lang-track"><div class="lang-fill" style="width:6%; background: linear-gradient(90deg, #3178c6, #bc8cff);"></div></div>
+        <span class="lang-count">3 repos</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">CSS</span>
+        <div class="lang-track"><div class="lang-fill" style="width:6%; background: linear-gradient(90deg, #264de4, #58a6ff);"></div></div>
+        <span class="lang-count">3 repos</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">Python</span>
+        <div class="lang-track"><div class="lang-fill" style="width:6%; background: linear-gradient(90deg, #3572A5, #3fb950);"></div></div>
+        <span class="lang-count">3 repos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ PROJECTS ══════════════ -->
+  <section>
+    <div class="section-header">
+      <span class="section-title">Featured Projects</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card accent-blue">
+        <div class="project-name">ai-code-reviewer</div>
+        <p class="project-desc">
+          An AI-powered code review tool built in JavaScript that leverages large language model APIs to automatically analyze code quality, flag potential bugs, and suggest improvements — directly aligned with Visa's emphasis on code correctness and maintainability.
+        </p>
+        <div class="project-footer">
+          <span class="tag tag-blue">JavaScript</span>
+          <span class="tag tag-muted">AI / LLM</span>
+        </div>
+      </div>
+
+      <div class="project-card accent-green">
+        <div class="project-name">API-GO</div>
+        <p class="project-desc">
+          A Go-based REST API project demonstrating backend service construction using Go's net/http or popular frameworks. Showcases understanding of routing, request handling, and service architecture — core skills for Visa's Go-based microservices.
+        </p>
+        <div class="project-footer">
+          <span class="tag tag-green">Go</span>
+          <span class="tag tag-muted">REST API</span>
+        </div>
+      </div>
+
+      <div class="project-card accent-purple">
+        <div class="project-name">auto-checkpoint</div>
+        <p class="project-desc">
+          A Go utility for automated checkpointing, reflecting deeper backend systems thinking — state management, reliability, and automated process control. Demonstrates the ability to write production-oriented Go code beyond simple scripting.
+        </p>
+        <div class="project-footer">
+          <span class="tag tag-purple">Go</span>
+          <span class="tag tag-muted">Automation</span>
+        </div>
+      </div>
+
+      <div class="project-card accent-blue">
+        <div class="project-name">ai-diagnosis-app</div>
+        <p class="project-desc">
+          A JavaScript application integrating AI capabilities to provide intelligent diagnostic outputs. Demonstrates experience with async data flows, API consumption, and building user-facing AI products with real-world applicability.
+        </p>
+        <div class="project-footer">
+          <span class="tag tag-blue">JavaScript</span>
+          <span class="tag tag-muted">AI / Health</span>
+        </div>
+      </div>
+
+      <div class="project-card accent-green">
+        <div class="project-name">amazon-clone</div>
+        <p class="project-desc">
+          A full-featured e-commerce clone in JavaScript replicating core Amazon UX/UI flows — cart management, product listings, and state handling. Highlights strong frontend JavaScript architecture and attention to real-world product design.
+        </p>
+        <div class="project-footer">
+          <span class="tag tag-green">JavaScript</span>
+          <span class="tag tag-muted">Full-Stack</span>
+        </div>
+      </div>
+
+      <div class="project-card accent-purple">
+        <div class="project-name">ai-interior-design</div>
+        <p class="project-desc">
+          Creative AI application that uses generative models to provide interior design suggestions. Demonstrates proficiency in integrating third-party AI APIs, handling image-based data, and building engaging product experiences.
+        </p>
+        <div class="project-footer">
+          <span class="tag tag-purple">JavaScript</span>
+          <span class="tag tag-muted">Generative AI</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════ EXPERIENCE ══════════════ -->
+  <section>
+    <div class="section-header">
+      <span class="section-title">Experience</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-top">
+        <div>
+          <div class="tl-title">Hackathon Participant — Team GODvenus</div>
+          <div class="tl-org">HackIndia · Spark 4, 6, 7 (NCR &amp; North Region)</div>
+        </div>
+        <span class="tl-date">2024 – Present</span>
+      </div>
+      <div class="tl-desc">
+        <ul>
+          <li>Competed across multiple HackIndia regional rounds (Spark 4 NCR East, Spark 6 NCR Central, Spark 7 North) as part of team GODvenus, demonstrating consistent commitment to competitive engineering.</li>
+          <li>Collaborated in cross-functional teams under tight deadlines, rapidly prototyping solutions and iterating on designs — experience translating directly to Agile sprint cycles.</li>
+          <li>Also participated independently in the OpenClaw hackathon under personal handle, showcasing initiative beyond team settings.</li>
+          <li>Developed problem-solving instincts, code collaboration via Git, and end-to-end feature delivery under real-world constraints.</li>

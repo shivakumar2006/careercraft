@@ -1,0 +1,10 @@
+Dear Hiring Team at Visa,
+
+I am writing to express my genuine interest in the Software Engineer role at Visa Inc. As someone who has spent a significant amount of time building with Go across multiple projects, including API-driven backends and algorithmic implementations, I was immediately drawn to this opportunity. Visa sits at the intersection of technology and global financial infrastructure, and the idea of writing code that quietly powers millions of transactions every single day is something I find deeply motivating. I want to build things that matter at scale, and Visa is exactly the kind of place where that becomes possible.
+
+My hands-on experience with Go and JavaScript has been shaped through real competitive environments. I competed in multiple HackIndia regional challenges, including the Spark 4 NCR East, Spark 6 NCR Central, and Spark 7 North Region events, where I had to ship functional, working software under pressure and tight timelines. These experiences taught me how to collaborate quickly, make pragmatic technical decisions, and write code that others can actually read and build upon. I also built out projects like Accomplish and 2nd-gym, where I took features from initial concept through to a working implementation, which closely mirrors the end-to-end development lifecycle your team values, from planning and design through testing and deployment.
+
+I will be honest that I am still growing in areas like relational databases and large-scale API documentation, but I am a fast and deliberate learner who actively seeks feedback. The code review culture you described is something I genuinely welcome rather than dread, because I have seen firsthand in collaborative hackathon settings how good feedback sharpens both the code and the person writing it. I would love the opportunity to speak with your team about how I can contribute meaningfully while continuing to grow within Visa's engineering culture. Please feel free to reach out at your earliest convenience, and thank you sincerely for your consideration.
+
+Sincerely,
+Shivakumar

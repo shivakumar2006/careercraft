@@ -1,0 +1,101 @@
+# Interview Prep Guide: Visa Inc. Software Engineer
+### Tailored for Shivakumar2006's Profile (Match Score: 54/100)
+
+---
+
+## 🔧 TECHNICAL QUESTIONS (Go & Backend Stack)
+
+**1. Walk me through how you structure a Go project. What packages and patterns do you typically use?**
+
+Q: Walk me through how you structure a Go project — packages, patterns, and conventions you follow.
+Hint: Reference your `API-GO` and `auto-checkpoint` repos directly. Mention separation of concerns using packages like `handlers`, `models`, `middleware`. Talk about Go conventions like keeping `main.go` thin and using interfaces for testability. Be honest about what you've learned independently vs. in a team setting.
+
+---
+
+**2. How do you handle errors in Go, and why does Go's approach differ from exceptions in other languages?**
+
+Q: Explain Go's error handling philosophy and how you've applied it in your projects.
+Hint: Explain that Go treats errors as values, not exceptions — functions return `(result, error)`. Reference a specific moment in your Go repos where you handled errors explicitly. Mention sentinel errors, `errors.Is()`, and `fmt.Errorf` with `%w` for wrapping — this will impress Visa interviewers looking for production-readiness awareness.
+
+---
+
+**3. You have a Go API endpoint that's occasionally returning incorrect data. How do you debug and write a unit test to catch it?**
+
+Q: Describe your debugging process for a misbehaving Go API and how you'd write a unit test to prevent regression.
+Hint: Mention using Go's built-in `testing` package and the `net/http/httptest` package for testing HTTP handlers without spinning up a real server. Reference your experience writing unit tests from the JD requirement. Walk through isolating the function, writing a table-driven test with multiple input cases, and asserting expected vs. actual output.
+
+---
+
+**4. What is a goroutine and a channel in Go? Give a practical scenario where you'd use both.**
+
+Q: Explain goroutines and channels in Go with a real-world use case relevant to a payments or API context.
+Hint: Define goroutines as lightweight concurrent functions and channels as typed communication pipes between them. Give a payments-relevant example like processing multiple transaction validation requests concurrently while collecting results through a channel. Mention `sync.WaitGroup` as a complementary tool. This shows awareness of concurrency — critical at Visa's scale.
+
+---
+
+**5. You've worked with binary search in Go (`binarysearch` repo). How would you apply algorithmic thinking to optimize a backend service lookup?**
+
+Q: How does your experience with algorithms like binary search translate to writing efficient backend service code?
+Hint: Connect algorithmic thinking to backend optimization — e.g., using sorted data structures or indexed lookups instead of linear scans on large datasets. Mention that at Visa's transaction volumes (millions per day), O(n) vs O(log n) lookup differences compound massively. Then pivot to acknowledging your database gap and show eagerness to learn indexing strategies in PostgreSQL.
+
+---
+
+## 🏗️ SYSTEM DESIGN QUESTIONS
+
+**6. Design a simple payment transaction processing API in Go. What endpoints, data flow, and reliability mechanisms would you include?**
+
+Q: Design a basic payment transaction API — walk me through the endpoints, data model, and how you'd ensure reliability.
+Hint: Start with core endpoints: `POST /transactions`, `GET /transactions/{id}`, `GET /accounts/{id}/balance`. Discuss idempotency keys to prevent duplicate payments — critical in fintech. Mention basic retry logic, input validation, and returning proper HTTP status codes (200, 201, 400, 409, 500). Acknowledge you'd need to learn the database layer but show you understand the API contract design.
+
+---
+
+**7. How would you design a system to handle 10,000 concurrent API requests per second without dropping transactions?**
+
+Q: Visa processes millions of transactions daily. How would you approach designing a backend service that handles massive concurrent load?
+Hint: Mention horizontal scaling with load balancers distributing across multiple Go service instances. Discuss connection pooling for database access, rate limiting to protect downstream services, and message queues (like Kafka) to decouple request intake from processing. Frame your answer around learning — "I understand these patterns from study; at Visa I'd contribute to implementing them under senior guidance" — which matches the JD's mentorship expectation.
+
+---
+
+**8. How would you design an internal monitoring system to detect when a microservice is behaving unexpectedly?**
+
+Q: Design a basic observability system for a Go microservice — what would you monitor and how?
+Hint: Cover three pillars of observability: **logs** (structured JSON logging with levels), **metrics** (request count, latency, error rate using Prometheus), and **traces** (distributed tracing with OpenTelemetry). Mention alerting thresholds — e.g., alert if error rate exceeds 1% over 5 minutes. Tie this back to the JD's mention of "production support" — monitoring is how you catch issues before users do.
+
+---
+
+**9. Describe how you'd design the database schema for a system that tracks user accounts and transaction history.**
+
+Q: Design a relational database schema to support user accounts and payment transaction history at scale.
+Hint: This targets your weakest area — be proactive. Propose tables: `users (id, name, email, created_at)`, `accounts (id, user_id, balance, currency)`, `transactions (id, from_account_id, to_account_id, amount, status, created_at)`. Discuss indexing on `account_id` and `created_at` for fast lookups. Conclude with: "I haven't used PostgreSQL extensively yet, but this is a gap I'm actively addressing and excited to develop at Visa."
+
+---
+
+## 🌟 BEHAVIORAL QUESTIONS (STAR Format)
+
+**10. Tell me about a time you received critical feedback on your code and how you responded.**
+
+Q: Describe a situation where someone gave you tough feedback on something you built. How did you handle it?
+Hint: **Situation** — Set up a code review moment from a personal project or academic setting. **Task** — You needed to refactor or rethink your approach. **Action** — Describe specifically how you listened, asked clarifying questions, researched the better approach, and implemented changes. **Result** — The code became cleaner or more efficient. This directly mirrors the JD's "participate in code reviews, giving and receiving feedback" requirement.
+
+---
+
+**11. Describe a project where you had to learn a new technology quickly to get something working. What was your process?**
+
+Q: Give an example of when you had to rapidly learn something new to complete a project. Walk me through your learning strategy.
+Hint: Reference learning Go independently given your 13 Go repos — this is a strong, authentic story. **Action** — Describe going from documentation → small experiments → building something real (`API-GO`, `auto-checkpoint`). **Result** — Quantify if possible: "Built a functional Go API in X weeks." This shows the self-directed learning Visa needs in a junior engineer who'll be absorbing new systems constantly.
+
+---
+
+**12. Tell me about a time you identified a bug or reliability issue in something you built and how you resolved it.**
+
+Q: Describe a situation where you discovered your own code had a defect. How did you find it and fix it?
+Hint: **Situation** — Reference a bug in one of your Go projects (e.g., `auto-checkpoint` or `API-GO`). **Action** — Walk through your debugging steps: reproducing consistently, adding logging or print statements, isolating the failing function, writing a test case that exposed the bug before fixing it. **Result** — Emphasize the lesson learned about writing tests upfront. This directly maps to the JD's "correctness and reliability of business logic" requirement.
+
+---
+
+## 🏢 COMPANY-SPECIFIC QUESTIONS
+
+**13. Visa operates in a highly regulated, zero-downtime environment. How does that change how a software engineer should write and test code compared to a typical startup?**
+
+Q: How do you think the engineering standards at a company like Visa differ from smaller tech environments, and how would you adapt?
+Hint: Acknowledge the stakes — a bug in payment processing affects millions of people's financial lives, not just user experience. Discuss the importance of exhaustive testing (unit, integration, regression), strict code review processes, feature flags for safe rollouts, and backward-compatible API changes. Show maturity: "I'm coming in to learn these standards from experienced engineers and apply them rigorously — that's exactly the environment I
