@@ -21,6 +21,10 @@ def get_databases() -> list[dict]:
             headers=HEADERS,
             json={"filter": {"value": "database", "property": "object"}},
         )
+        print("Search Response:")
+        print(res.status_code)
+        print(res.text)
+
         data = res.json()
         return data.get("results", [])
     except Exception as e:
@@ -40,6 +44,10 @@ def create_prep_database(company: str) -> str | None:
             headers=HEADERS,
             json={"filter": {"value": "page", "property": "object"}, "page_size": 1},
         )
+        print("Search Response:")
+        print(res.status_code)
+        print(res.text)
+    
         pages = res.json().get("results", [])
         if not pages:
             print("No Notion pages found to create DB in")
@@ -78,8 +86,12 @@ def create_prep_database(company: str) -> str | None:
             headers=HEADERS,
             json=db_payload,
         )
-        db = res.json()
-        return db.get("id")
+        print("Database Create Response:")
+        print(res.status_code)
+        print(res.text)
+
+        data = res.json()
+        return data.get("id")
 
     except Exception as e:
         print(f"Notion create DB error: {e}")
@@ -121,8 +133,12 @@ def add_tasks_to_notion(company: str, prep_plan: str) -> bool:
                 headers=HEADERS,
                 json=payload,
             )
-            if res.status_code == 200:
+            if res.status_code in [200, 201]:
                 success_count += 1
+            else:
+                print("Task Create Error:")
+                print(res.status_code)
+                print(res.text)
         except Exception as e:
             print(f"Task add error: {e}")
 

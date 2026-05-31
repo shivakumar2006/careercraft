@@ -27,7 +27,7 @@ export default function Navbar() {
             </Link>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                {[{ to: '/', label: 'Home' }, { to: '/analyze', label: 'Analyze' }].map(({ to, label }) => (
+                {[{ to: '/', label: 'Home' }, { to: '/analyze', label: 'Analyze' }, { to: '/chat', label: 'Chat with Agent' }].map(({ to, label }) => (
                     <Link key={to} to={to} style={{
                         padding: '8px 16px', borderRadius: '10px', fontSize: '14px',
                         fontWeight: 500, textDecoration: 'none', fontFamily: 'Space Grotesk',

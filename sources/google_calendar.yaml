@@ -1,0 +1,87 @@
+name: calendar
+version: 0.1.0
+dsl_version: 3
+
+backend: http
+
+inputs:
+  GOOGLE_OAUTH_CLIENT_ID:
+    kind: variable
+
+  GOOGLE_OAUTH_CLIENT_SECRET:
+    kind: secret
+
+  GOOGLE_CALENDAR_TOKEN:
+    kind: secret
+    credential:
+      methods:
+        - type: oauth
+          label: Connect Google Calendar
+          oauth:
+            flow:
+              type: authorization_code
+              pkce: required
+
+            redirect_uri: http://127.0.0.1:0/oauth/callback
+            redirect_uri_port_mode: random
+
+            endpoints:
+              authorization_url: https://accounts.google.com/o/oauth2/v2/auth
+              token_url: https://oauth2.googleapis.com/token
+
+            client:
+              id:
+                input: GOOGLE_OAUTH_CLIENT_ID
+
+              secret:
+                input: GOOGLE_OAUTH_CLIENT_SECRET
+                transport: request_body
+
+            scopes:
+              scope:
+                delimiter: space
+                values:
+                  - https://www.googleapis.com/auth/calendar.readonly
+
+base_url: https://www.googleapis.com/calendar/v3
+
+auth:
+  type: HeaderAuth
+  headers:
+    - name: Authorization
+      from: template
+      template: Bearer {{input.GOOGLE_CALENDAR_TOKEN}}
+
+tables:
+  - name: events
+    description: Google Calendar events from primary calendar
+
+    request:
+      method: GET
+      path: /calendars/primary/events
+
+    response:
+      rows_path:
+        - items
+
+    columns:
+      - name: id
+        type: Utf8
+
+      - name: summary
+        type: Utf8
+
+      - name: status
+        type: Utf8
+
+      - name: htmlLink
+        type: Utf8
+
+      - name: start
+        type: Json
+
+      - name: end
+        type: Json
+
+test_queries:
+  - SELECT * FROM calendar.events LIMIT 1

@@ -17,6 +17,7 @@ from analyzer import (
     save_all_files,
 )
 from notion_integration import add_tasks_to_notion
+from chat_agent import chat
 
 load_dotenv()
 
@@ -195,7 +196,7 @@ async def chat_endpoint(req: ChatRequest):
     """
     try:
         response = await asyncio.get_event_loop().run_in_executor(
-            None, agent_chat, req.message, req.history
+            None, chat, req.message, req.history
         )
         return {
             "response": response,

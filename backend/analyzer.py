@@ -5,7 +5,7 @@ import anthropic
 from coral_queries import (
     get_user_repos,
     get_user_languages,
-    get_recent_activity,
+    # get_recent_activity,
     get_company_repos,
     get_github_prs,
     get_github_commits,
@@ -90,31 +90,143 @@ Be specific, reference actual repo names, and make the prep plan actionable with
 # generators 
 def generate_resume(jd: str, profile: dict, analysis: str) -> str: 
     """Generate tailored HTML resume"""
-    prompt = f"""Generate a complete, beautiful, modern HTML resume tailored for this job.
- 
-Use the developer's ACTUAL data — do not make up fake projects or skills.
- 
-Developer: {profile['github_username']}
-Real Repos: {json.dumps(profile['repos'][:12], indent=2)}
-Languages: {json.dumps(profile['languages'], indent=2)}
-JD Summary: {jd[:600]}
-Analysis: {analysis[:800]}
- 
-Design requirements:
-- Dark theme: background #0d1117, cards #161b22
-- Accent colors: blue #58a6ff, green #3fb950, purple #bc8cff
-- JetBrains Mono for code elements, Inter for body
-- Sections: Header, Summary, Skills, Projects (top 3), Experience, Education, Achievements
-- Match score badge in header
-- Hover effects on cards
-- Print-friendly @media print styles
-- Mobile responsive
- 
-Return ONLY a complete valid HTML file. No markdown fences."""
+    prompt = f"""
+You are an elite resume writer and senior technical recruiter.
+
+Your task is to create a world-class ATS-optimized software engineer resume tailored specifically for the provided job description.
+
+IMPORTANT RULES:
+
+* Use ONLY information from the developer's actual GitHub profile data.
+* Never invent companies, jobs, internships, achievements, certifications, or technologies.
+* If information is missing, omit the section instead of hallucinating.
+* Prioritize projects that best match the job description.
+* Make the candidate look as strong as possible using real evidence.
+
+Developer Profile:
+Username: {profile['github_username']}
+
+GitHub Repositories:
+{json.dumps(profile['repos'][:20], indent=2)}
+
+Languages:
+{json.dumps(profile['languages'], indent=2)}
+
+Job Description:
+{jd}
+
+Career Analysis:
+{analysis}
+
+Generate a COMPLETE professional HTML resume.
+
+Required Sections:
+
+1. HERO HEADER
+
+   - Full Name
+   - Professional Title
+   - GitHub
+   - LinkedIn (placeholder if unavailable)
+   - Email (placeholder if unavailable)
+   - Match Score Badge
+
+2. PROFESSIONAL SUMMARY
+
+   - 4-6 lines
+   - Tailored specifically to the role
+   - Mention strongest technologies
+   - Mention strongest project domains
+
+3. TECHNICAL SKILLS
+   Categories:
+
+   - Languages
+   - Frontend
+   - Backend
+   - Databases
+   - Cloud & DevOps
+   - Tools & Platforms
+
+4. FEATURED PROJECTS
+
+   - Select the BEST 3 projects
+   - Explain why each project is relevant
+   - Include:
+
+     - Project Name
+     - Description
+     - Technologies
+     - Business Impact
+     - Key Features
+     - Challenges Solved
+
+5. ADDITIONAL PROJECTS
+
+   - Display remaining relevant projects
+
+6. EXPERIENCE
+
+   - If no professional experience exists:
+     "Independent Software Developer"
+   - Showcase project experience professionally
+
+7. EDUCATION
+
+8. ACHIEVEMENTS
+
+   - GitHub statistics
+   - Open source contributions
+   - Project count
+   - Language expertise
+
+9. WHY THIS CANDIDATE FITS THIS ROLE
+
+   - 3-5 bullet points
+
+10. ATS KEYWORDS
+
+- Naturally incorporate keywords from JD
+
+Design Requirements:
+
+- Premium modern SaaS style
+- Dark theme
+- Background: #0d1117
+- Cards: #161b22
+- Accent: #7c6ef7
+- Secondary Accent: #58a6ff
+- Success: #1ddf8a
+
+UI Requirements:
+
+- Beautiful hero section
+- Glassmorphism cards
+- Progress bars for skills
+- Project cards
+- ATS score badge
+- Responsive design
+- Mobile friendly
+- Print friendly
+- Professional typography
+- Clean spacing
+
+Technical Requirements:
+
+- Return a COMPLETE standalone HTML document
+- Include all CSS inside <style>
+- No external dependencies
+- No markdown
+- No code fences
+- Must be immediately viewable in browser
+
+Output ONLY valid HTML.
+"""
+
 
     response = client.messages.create(
         model = MODEL,
-        max_tokens = 8096,
+        max_tokens = 12096,
         messages = [{"role": "user", "content": prompt}]
     )
     return response.content[0].text
@@ -191,7 +303,7 @@ Return ONLY complete HTML."""
 
     response = client.messages.create(
         model=MODEL,
-        max_tokens=8096,
+        max_tokens=18000,
         messages=[
             {
                 "role": "user",

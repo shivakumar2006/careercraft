@@ -39,10 +39,18 @@ export const api = createApi({
             query: (filename) => `/preview/${filename}`,
         }),
 
+        chat: builder.mutation({
+            query: (data) => ({
+                url: '/chat',
+                method: "POST",
+                body: data,
+            }),
+        }),
+
         health: builder.query({
             query: () => "/health",
         }),
     }),
 });
 
-export const { useAnalyzeMutation, useGetFilesQuery, useGetFilesContentQuery, usePreviewFileQuery, useHealthQuery } = api;
+export const { useAnalyzeMutation, useGetFilesQuery, useGetFilesContentQuery, usePreviewFileQuery, useHealthQuery, useChatMutation } = api;
