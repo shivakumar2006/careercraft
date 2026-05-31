@@ -291,6 +291,8 @@ NOTION_TOKEN=your_notion_token
 ## Author
 
 **Shiva** — [@shivakumar2006](https://github.com/shivakumar2006)
+**Linkedin** - [Linkedin](https://www.linkedin.com/in/shiva-shiva-8a48002a7/)
+**Email** - [Email](official.shivakumar06@gmail.com)
 
 Hackathon builder · Go developer
 
