@@ -4,62 +4,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CareerCraft — Visa × shivakumar2006</title>
+<title>CareerCraft — shivakumar2006 × Visa Inc.</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --bg: #0a0a0f;
-    --bg2: #0f0f18;
-    --bg3: #141420;
-    --bg4: #1a1a2e;
+    --bg2: #0f0f1a;
+    --bg3: #141422;
+    --card: #12121e;
+    --card2: #1a1a2e;
+    --border: rgba(124,110,247,0.15);
     --accent: #7c6ef7;
-    --accent2: #9d92f8;
-    --accent3: #5a4fd4;
+    --accent2: #9d91ff;
     --green: #1ddf8a;
-    --green2: #15b872;
+    --green2: #0fb870;
     --red: #ff4d6d;
     --yellow: #ffd166;
     --text: #e8e8f0;
-    --text2: #a0a0b8;
-    --text3: #606078;
-    --border: rgba(124,110,247,0.15);
-    --card: rgba(255,255,255,0.03);
-    --card-hover: rgba(255,255,255,0.06);
-    --glow: 0 0 40px rgba(124,110,247,0.2);
-    --glow-green: 0 0 30px rgba(29,223,138,0.15);
+    --muted: #6b6b8a;
+    --muted2: #9090aa;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', sans-serif;
     background: var(--bg);
     color: var(--text);
-    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
     overflow-x: hidden;
   }
 
-  /* Animated background */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background:
-      radial-gradient(ellipse 80% 50% at 20% 10%, rgba(124,110,247,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(29,223,138,0.05) 0%, transparent 50%),
-      radial-gradient(ellipse 40% 60% at 50% 50%, rgba(124,110,247,0.03) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
 
-  /* ── NAVBAR ── */
+  /* ═══════════════════════════ NAVBAR ═══════════════════════════ */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 1000;
     background: rgba(10,10,15,0.85);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
@@ -73,1255 +61,1533 @@
   .nav-brand {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
   }
 
-  .nav-logo {
+  .nav-brand .logo {
     width: 32px; height: 32px;
     background: linear-gradient(135deg, var(--accent), var(--green));
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 14px;
-    color: white;
-    flex-shrink: 0;
-  }
-
-  .nav-title {
-    font-weight: 700;
-    font-size: 1.1rem;
-    background: linear-gradient(135deg, var(--accent2), var(--green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
   }
 
   .nav-links {
     display: flex;
-    gap: 0.25rem;
+    gap: 2rem;
     list-style: none;
   }
 
   .nav-links a {
-    color: var(--text2);
+    color: var(--muted2);
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    transition: all 0.2s;
+    transition: color 0.2s;
   }
 
-  .nav-links a:hover {
-    color: var(--text);
-    background: var(--card-hover);
-  }
+  .nav-links a:hover { color: var(--accent2); }
 
   .nav-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .badge {
-    padding: 0.25rem 0.75rem;
+    background: linear-gradient(135deg, var(--accent), #5b4fe9);
+    color: #fff;
+    padding: 6px 14px;
     border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
   }
 
-  .badge-visa {
-    background: rgba(29,223,138,0.1);
-    border: 1px solid rgba(29,223,138,0.3);
-    color: var(--green);
-  }
+  /* ═══════════════════════════ MAIN ═══════════════════════════ */
+  main { padding-top: 64px; }
 
-  .badge-role {
-    background: rgba(124,110,247,0.1);
-    border: 1px solid rgba(124,110,247,0.3);
-    color: var(--accent2);
-  }
-
-  /* ── MAIN ── */
-  main {
-    position: relative;
-    z-index: 1;
-    padding-top: 64px;
-  }
+  section { padding: 5rem 0; }
 
   .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 2rem;
   }
 
-  section {
-    padding: 5rem 0;
-  }
-
   .section-label {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--accent2);
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .section-label::before {
-    content: '';
-    width: 20px;
-    height: 2px;
-    background: var(--accent);
-    border-radius: 2px;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
   }
 
   .section-title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-size: 2rem;
     font-weight: 800;
-    line-height: 1.15;
-    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
   }
 
-  .section-subtitle {
-    color: var(--text2);
-    font-size: 1rem;
-    line-height: 1.7;
-    max-width: 600px;
+  .section-sub {
+    color: var(--muted2);
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
   }
 
-  /* ── HERO ── */
+  /* ═══════════════════════════ HERO ═══════════════════════════ */
   #hero {
-    padding: 6rem 0 5rem;
-    border-bottom: 1px solid var(--border);
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 0;
   }
 
-  .hero-grid {
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .hero-glow-1 {
+    width: 500px; height: 500px;
+    background: rgba(124,110,247,0.12);
+    top: -100px; left: -100px;
+  }
+
+  .hero-glow-2 {
+    width: 400px; height: 400px;
+    background: rgba(29,223,138,0.08);
+    bottom: 0; right: -100px;
+  }
+
+  .hero-inner {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 4rem;
     align-items: center;
+    width: 100%;
   }
 
   .hero-eyebrow {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 10px;
     margin-bottom: 1.5rem;
-    flex-wrap: wrap;
   }
 
   .hero-tag {
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    background: rgba(124,110,247,0.1);
-    border: 1px solid rgba(124,110,247,0.25);
+    background: rgba(124,110,247,0.15);
+    border: 1px solid rgba(124,110,247,0.3);
     color: var(--accent2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
   }
 
-  .hero-tag.green {
-    background: rgba(29,223,138,0.08);
-    border-color: rgba(29,223,138,0.25);
+  .hero-company-tag {
+    background: rgba(29,223,138,0.1);
+    border: 1px solid rgba(29,223,138,0.25);
     color: var(--green);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
   }
 
-  .hero-name {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+  .hero-title {
+    font-size: 3.2rem;
     font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--text) 30%, var(--accent2));
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-title span {
+    background: linear-gradient(135deg, var(--accent), var(--green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .hero-role {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text2);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  .hero-verdict {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--yellow);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    color: var(--muted2);
+    margin-bottom: 2rem;
+    max-width: 560px;
   }
 
-  .hero-role span {
-    color: var(--accent2);
-  }
+  .hero-verdict strong { color: var(--yellow); }
 
   .hero-meta {
     display: flex;
     gap: 2rem;
-    margin-bottom: 2rem;
     flex-wrap: wrap;
   }
 
-  .hero-meta-item {
+  .meta-item {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 2px;
   }
 
-  .hero-meta-value {
-    font-size: 1.1rem;
-    font-weight: 700;
+  .meta-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .meta-value {
+    font-size: 0.92rem;
+    font-weight: 600;
     color: var(--text);
   }
 
-  .hero-meta-label {
-    font-size: 0.75rem;
-    color: var(--text3);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .hero-langs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .lang-chip {
-    padding: 0.35rem 0.85rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    background: var(--bg4);
-    border: 1px solid var(--border);
-    color: var(--text2);
-    transition: all 0.2s;
-  }
-
-  .lang-chip:hover {
-    border-color: var(--accent);
-    color: var(--accent2);
-  }
-
-  .hero-repos {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .hero-repos-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.25rem;
-  }
-
-  .repo-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.78rem;
-    color: var(--text2);
-    font-family: 'Monaco', 'Consolas', monospace;
-  }
-
-  .repo-tag::before {
-    content: '⬡';
-    font-size: 0.7rem;
-    color: var(--accent);
-  }
-
-  /* ── SCORE RING ── */
+  /* ═══════════════════════════ SCORE RING ═══════════════════════════ */
   .score-ring-wrapper {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-  }
-
-  .score-ring-container {
-    position: relative;
-    width: 220px;
-    height: 220px;
+    gap: 1rem;
     flex-shrink: 0;
   }
 
-  .score-ring-svg {
-    width: 220px;
-    height: 220px;
-    transform: rotate(-90deg);
+  .ring-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
   }
 
-  .score-ring-bg {
+  .ring-svg {
+    transform: rotate(-90deg);
+    width: 200px;
+    height: 200px;
+  }
+
+  .ring-track {
     fill: none;
-    stroke: rgba(124,110,247,0.1);
+    stroke: rgba(124,110,247,0.12);
     stroke-width: 12;
   }
 
-  .score-ring-fill {
+  .ring-fill {
     fill: none;
     stroke: url(#ringGrad);
     stroke-width: 12;
     stroke-linecap: round;
-    stroke-dasharray: 565;
-    stroke-dashoffset: 565;
-    transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 0 8px rgba(124,110,247,0.5));
+    stroke-dasharray: 534;
+    stroke-dashoffset: 534;
+    transition: stroke-dashoffset 2s cubic-bezier(0.4,0,0.2,1);
   }
 
-  .score-ring-inner {
+  .ring-center {
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.2rem;
+    text-align: center;
   }
 
-  .score-number {
-    font-size: 3.5rem;
+  .ring-score {
+    font-size: 3rem;
     font-weight: 900;
-    line-height: 1;
-    background: linear-gradient(135deg, var(--accent2), var(--green));
+    letter-spacing: -2px;
+    background: linear-gradient(135deg, var(--accent), var(--green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    counter-reset: score 0;
+    line-height: 1;
   }
 
-  .score-out-of {
-    font-size: 0.8rem;
-    color: var(--text3);
+  .ring-total {
+    font-size: 0.85rem;
+    color: var(--muted);
     font-weight: 500;
   }
 
-  .score-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--accent2);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .score-verdict {
-    text-align: center;
-    max-width: 200px;
-  }
-
-  .verdict-text {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--yellow);
-    margin-bottom: 0.3rem;
-  }
-
-  .verdict-sub {
-    font-size: 0.75rem;
-    color: var(--text3);
-    line-height: 1.4;
-  }
-
-  .score-ticks {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-  }
-
-  .tick-item {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+  .ring-label {
     font-size: 0.78rem;
-    color: var(--text2);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted2);
   }
 
-  .tick-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
+  .ring-verdict-badge {
+    background: rgba(255,209,102,0.12);
+    border: 1px solid rgba(255,209,102,0.3);
+    color: var(--yellow);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
   }
 
-  .tick-dot.green { background: var(--green); box-shadow: 0 0 6px rgba(29,223,138,0.5); }
-  .tick-dot.yellow { background: var(--yellow); box-shadow: 0 0 6px rgba(255,209,102,0.5); }
-  .tick-dot.red { background: var(--red); box-shadow: 0 0 6px rgba(255,77,109,0.5); }
-
-  /* ── SKILLS ── */
-  #skills {
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
+  /* ═══════════════════════════ SKILLS ═══════════════════════════ */
+  #skills { background: var(--bg2); }
 
   .skills-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
   }
 
   .skill-card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.5rem;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
+    border-radius: 14px;
+    padding: 1.4rem;
+    transition: border-color 0.2s, transform 0.2s;
   }
 
   .skill-card:hover {
-    background: var(--card-hover);
-    border-color: rgba(124,110,247,0.3);
+    border-color: rgba(124,110,247,0.4);
     transform: translateY(-2px);
-    box-shadow: var(--glow);
   }
-
-  .skill-card:hover::before { opacity: 1; }
 
   .skill-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 1rem;
-  }
-
-  .skill-info {
-    flex: 1;
+    margin-bottom: 0.8rem;
   }
 
   .skill-name {
-    font-size: 0.95rem;
     font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.25rem;
+    font-size: 0.92rem;
   }
 
-  .skill-category {
+  .skill-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-pct {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+
+  .skill-weighted {
     font-size: 0.72rem;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 500;
-  }
-
-  .skill-score-badge {
-    padding: 0.2rem 0.6rem;
+    color: var(--muted);
+    background: var(--bg3);
+    padding: 2px 7px;
     border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    flex-shrink: 0;
   }
 
-  .skill-weight {
-    font-size: 0.72rem;
-    color: var(--text3);
-    text-align: right;
-    margin-top: 0.15rem;
+  .skill-desc {
+    font-size: 0.8rem;
+    color: var(--muted2);
+    margin-bottom: 1rem;
+    line-height: 1.5;
   }
 
   .skill-bar-track {
-    height: 8px;
+    height: 6px;
     background: rgba(255,255,255,0.06);
-    border-radius: 100px;
+    border-radius: 99px;
     overflow: hidden;
-    margin-bottom: 0.6rem;
   }
 
   .skill-bar-fill {
     height: 100%;
-    border-radius: 100px;
-    width: 0%;
-    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
+    border-radius: 99px;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.4,0,0.2,1);
   }
 
-  .skill-bar-fill::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: inherit;
-    box-shadow: 0 0 8px currentColor;
-    opacity: 0.8;
+  /* ═══════════════════════════ REPOS ═══════════════════════════ */
+  .repos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
 
-  .skill-note {
-    font-size: 0.75rem;
-    color: var(--text3);
-    line-height: 1.4;
+  .repo-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    transition: all 0.2s;
+    cursor: default;
   }
 
-  /* Score color ranges */
-  .score-high { background: rgba(29,223,138,0.15); color: var(--green); }
-  .score-mid { background: rgba(255,209,102,0.15); color: var(--yellow); }
-  .score-low { background: rgba(255,77,109,0.15); color: var(--red); }
-
-  .bar-high { background: linear-gradient(90deg, var(--green2), var(--green)); }
-  .bar-mid { background: linear-gradient(90deg, #e6a200, var(--yellow)); }
-  .bar-low { background: linear-gradient(90deg, #c0002a, var(--red)); }
-
-  /* ── CHECKLIST ── */
-  #checklist {
-    border-bottom: 1px solid var(--border);
+  .repo-card:hover {
+    border-color: rgba(124,110,247,0.4);
+    background: var(--card2);
+    transform: translateY(-2px);
   }
+
+  .repo-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .repo-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 0.4rem;
+    word-break: break-all;
+  }
+
+  .repo-langs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .lang-tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .lang-go { background: rgba(0,173,216,0.15); color: #00add8; }
+  .lang-js { background: rgba(247,220,111,0.15); color: #f7dc6f; }
+  .lang-ts { background: rgba(49,120,198,0.15); color: #3178c6; }
+  .lang-html { background: rgba(228,77,38,0.15); color: #e44d26; }
+  .lang-other { background: rgba(124,110,247,0.15); color: var(--accent2); }
+
+  /* ═══════════════════════════ CHECKLIST ═══════════════════════════ */
+  #checklist { background: var(--bg2); }
 
   .weeks-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-    margin-top: 3rem;
+    gap: 1.2rem;
   }
 
   .week-card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.3s;
-  }
-
-  .week-card:hover {
-    border-color: rgba(124,110,247,0.3);
-    box-shadow: var(--glow);
+    border-radius: 14px;
+    padding: 1.4rem;
   }
 
   .week-header {
-    padding: 1.25rem 1.25rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid var(--border);
-    background: linear-gradient(135deg, rgba(124,110,247,0.05), transparent);
   }
 
-  .week-number {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 0.3rem;
+  .week-num {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--accent), #5b4fe9);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    flex-shrink: 0;
   }
 
   .week-title {
-    font-size: 0.95rem;
     font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.6rem;
+    font-size: 0.88rem;
+    line-height: 1.3;
   }
 
   .week-progress-bar {
-    height: 4px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 100px;
+    height: 3px;
+    background: var(--bg3);
+    border-radius: 99px;
+    margin-bottom: 1rem;
     overflow: hidden;
-    margin-bottom: 0.4rem;
   }
 
   .week-progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent3), var(--accent));
-    border-radius: 100px;
-    transition: width 0.5s ease;
+    background: linear-gradient(90deg, var(--accent), var(--green));
+    border-radius: 99px;
+    transition: width 0.4s ease;
   }
 
-  .week-progress-text {
+  .week-count {
     font-size: 0.72rem;
-    color: var(--text3);
-    text-align: right;
+    color: var(--muted);
+    margin-bottom: 1rem;
   }
 
-  .week-tasks {
-    padding: 1rem 1.25rem 1.25rem;
+  .checklist-items {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.6rem;
   }
 
-  .task-item {
+  .checklist-item {
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 10px;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.5rem 0.6rem;
     border-radius: 8px;
-    transition: all 0.2s;
-    user-select: none;
+    transition: background 0.15s;
   }
 
-  .task-item:hover {
-    background: rgba(255,255,255,0.04);
-  }
+  .checklist-item:hover { background: var(--bg3); }
 
-  .task-checkbox {
-    width: 18px;
-    height: 18px;
-    border-radius: 5px;
-    border: 2px solid var(--border);
+  .checklist-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--muted);
+    border-radius: 4px;
     flex-shrink: 0;
-    margin-top: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 2px;
+    cursor: pointer;
     transition: all 0.2s;
-    background: transparent;
+    position: relative;
   }
 
-  .task-checkbox.checked {
+  .checklist-item input[type="checkbox"]:checked {
     background: var(--green);
     border-color: var(--green);
-    box-shadow: 0 0 8px rgba(29,223,138,0.4);
   }
 
-  .task-checkbox.checked::after {
+  .checklist-item input[type="checkbox"]:checked::after {
     content: '✓';
-    font-size: 11px;
-    color: var(--bg);
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    font-size: 10px;
     font-weight: 800;
   }
 
-  .task-text {
-    font-size: 0.8rem;
-    color: var(--text2);
+  .checklist-text {
+    font-size: 0.82rem;
+    color: var(--muted2);
     line-height: 1.4;
-    transition: all 0.2s;
-    flex: 1;
+    transition: color 0.2s;
   }
 
-  .task-item.done .task-text {
-    color: var(--text3);
+  .checklist-item.done .checklist-text {
+    color: var(--muted);
     text-decoration: line-through;
   }
 
-  .checklist-summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 2rem;
-  }
+  /* ═══════════════════════════ ACCORDION ═══════════════════════════ */
+  .accordion { display: flex; flex-direction: column; gap: 1rem; }
 
-  .summary-stat {
+  .acc-item {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
-    text-align: center;
-  }
-
-  .summary-stat-number {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--accent2);
-    display: block;
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-
-  .summary-stat-label {
-    font-size: 0.78rem;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 500;
-  }
-
-  /* ── INTERVIEW ── */
-  #interview {
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .interview-filters {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin: 2rem 0 1.5rem;
-  }
-
-  .filter-btn {
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text2);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .filter-btn:hover, .filter-btn.active {
-    background: rgba(124,110,247,0.1);
-    border-color: var(--accent);
-    color: var(--accent2);
-  }
-
-  .accordion-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .accordion-item {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
-    transition: all 0.3s;
+    transition: border-color 0.2s;
   }
 
-  .accordion-item:hover {
-    border-color: rgba(124,110,247,0.25);
-  }
+  .acc-item.open { border-color: rgba(124,110,247,0.4); }
 
-  .accordion-item.open {
-    border-color: rgba(124,110,247,0.4);
-    box-shadow: 0 4px 30px rgba(124,110,247,0.1);
-  }
-
-  .accordion-header {
+  .acc-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1.25rem 1.5rem;
+    justify-content: space-between;
+    padding: 1.2rem 1.4rem;
     cursor: pointer;
-    transition: background 0.2s;
+    user-select: none;
+    gap: 1rem;
   }
 
-  .accordion-header:hover {
-    background: rgba(255,255,255,0.02);
+  .acc-header:hover { background: rgba(255,255,255,0.02); }
+
+  .acc-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
-  .q-number {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(124,110,247,0.1);
-    border: 1px solid rgba(124,110,247,0.2);
+  .acc-num {
+    width: 28px; height: 28px;
+    background: rgba(124,110,247,0.15);
+    border: 1px solid rgba(124,110,247,0.3);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--accent2);
     flex-shrink: 0;
   }
 
-  .q-meta {
-    flex: 1;
-  }
-
-  .q-category {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    margin-bottom: 0.2rem;
-  }
-
-  .q-text {
-    font-size: 0.9rem;
+  .acc-q {
     font-weight: 600;
-    color: var(--text);
+    font-size: 0.92rem;
     line-height: 1.4;
   }
 
-  .q-diff {
-    padding: 0.2rem 0.6rem;
+  .acc-tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 2px 8px;
     border-radius: 6px;
-    font-size: 0.7rem;
-    font-weight: 700;
     flex-shrink: 0;
   }
 
-  .diff-easy { background: rgba(29,223,138,0.1); color: var(--green); border: 1px solid rgba(29,223,138,0.2); }
-  .diff-medium { background: rgba(255,209,102,0.1); color: var(--yellow); border: 1px solid rgba(255,209,102,0.2); }
-  .diff-hard { background: rgba(255,77,109,0.1); color: var(--red); border: 1px solid rgba(255,77,109,0.2); }
+  .tag-tech { background: rgba(124,110,247,0.15); color: var(--accent2); }
+  .tag-sys { background: rgba(29,223,138,0.12); color: var(--green); }
+  .tag-beh { background: rgba(255,209,102,0.12); color: var(--yellow); }
+  .tag-db { background: rgba(255,77,109,0.12); color: var(--red); }
 
-  .accordion-chevron {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text3);
+  .acc-arrow {
+    flex-shrink: 0;
+    color: var(--muted);
     transition: transform 0.3s;
-    flex-shrink: 0;
+    font-size: 1.1rem;
   }
 
-  .accordion-item.open .accordion-chevron {
-    transform: rotate(180deg);
-    color: var(--accent2);
-  }
+  .acc-item.open .acc-arrow { transform: rotate(180deg); color: var(--accent); }
 
-  .accordion-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .accordion-body.open {
-    max-height: 1000px;
-  }
-
-  .accordion-content {
-    padding: 0 1.5rem 1.5rem;
+  .acc-body {
+    display: none;
+    padding: 0 1.4rem 1.4rem;
     border-top: 1px solid var(--border);
   }
 
-  .hint-box {
-    background: rgba(124,110,247,0.05);
-    border: 1px solid rgba(124,110,247,0.15);
+  .acc-item.open .acc-body { display: block; }
+
+  .acc-hint {
+    background: var(--bg3);
     border-left: 3px solid var(--accent);
-    border-radius: 0 10px 10px 0;
-    padding: 1rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.2rem;
+    font-size: 0.85rem;
+    color: var(--muted2);
+    line-height: 1.6;
     margin-top: 1rem;
   }
 
-  .hint-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
+  .acc-hint strong { color: var(--accent2); }
 
-  .hint-text {
-    font-size: 0.85rem;
-    color: var(--text2);
-    line-height: 1.65;
-  }
-
-  .hint-text code {
-    background: rgba(124,110,247,0.15);
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
-    font-family: 'Monaco', 'Consolas', monospace;
-    font-size: 0.82em;
-    color: var(--accent2);
-  }
-
-  /* ── COVER LETTER ── */
-  #cover {
-    border-bottom: 1px solid var(--border);
-  }
+  /* ═══════════════════════════ COVER LETTER ═══════════════════════════ */
+  #cover { background: var(--bg2); }
 
   .cover-wrapper {
-    max-width: 800px;
-    margin: 3rem auto 0;
-  }
-
-  .cover-card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 20px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: var(--glow);
   }
 
   .cover-toolbar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
+    align-items: center;
+    padding: 1rem 1.4rem;
+    background: var(--bg3);
     border-bottom: 1px solid var(--border);
-    background: rgba(124,110,247,0.03);
   }
 
-  .cover-dots {
+  .cover-toolbar-left {
     display: flex;
-    gap: 0.4rem;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted2);
   }
 
   .cover-dot {
-    width: 12px;
-    height: 12px;
+    width: 8px; height: 8px;
+    background: var(--green);
     border-radius: 50%;
+    animation: pulse 2s infinite;
   }
 
-  .cover-dot:nth-child(1) { background: #ff5f57; }
-  .cover-dot:nth-child(2) { background: #ffbd2e; }
-  .cover-dot:nth-child(3) { background: #28ca41; }
-
-  .cover-title {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text3);
-    font-family: 'Monaco', 'Consolas', monospace;
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
   }
 
   .copy-btn {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 1rem;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--accent), #5b4fe9);
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
     border-radius: 8px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text2);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
     font-family: 'Inter', sans-serif;
   }
 
-  .copy-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent2);
-    background: rgba(124,110,247,0.08);
-  }
-
-  .copy-btn.copied {
-    border-color: var(--green);
-    color: var(--green);
-    background: rgba(29,223,138,0.08);
-  }
+  .copy-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .copy-btn:active { transform: translateY(0); }
+  .copy-btn.copied { background: linear-gradient(135deg, var(--green2), var(--green)); }
 
   .cover-body {
-    padding: 2.5rem;
-    font-size: 0.92rem;
-    line-height: 1.85;
-    color: var(--text2);
-  }
-
-  .cover-body p {
-    margin-bottom: 1.25rem;
-  }
-
-  .cover-body p:last-child {
-    margin-bottom: 0;
-  }
-
-  .cover-body strong {
-    color: var(--text);
-    font-weight: 600;
-  }
-
-  .cover-body .highlight {
-    color: var(--accent2);
-    font-weight: 600;
-  }
-
-  .cover-body .green-text {
-    color: var(--green);
-    font-weight: 600;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 3rem 0;
-    border-top: 1px solid var(--border);
-    text-align: center;
-  }
-
-  .footer-brand {
+    padding: 2rem;
     font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--muted2);
+    white-space: pre-wrap;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .cover-body .para { margin-bottom: 1.2rem; }
+
+  /* ═══════════════════════════ SCORE TABLE ═══════════════════════════ */
+  .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.87rem;
+  }
+
+  .score-table thead th {
+    text-align: left;
+    padding: 0.8rem 1rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+
+  .score-table tbody td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+  }
+
+  .score-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+  .score-table tbody tr:last-child td { border-bottom: none; }
+
+  .td-name { font-weight: 600; }
+  .td-weight { color: var(--muted2); font-size: 0.82rem; }
+  .td-score { font-weight: 700; color: var(--accent2); }
+  .td-weighted { font-weight: 700; color: var(--green); }
+
+  .mini-bar {
+    width: 80px;
+    height: 4px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .mini-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), var(--green));
+    transition: width 1s ease;
+    width: 0;
+  }
+
+  /* ═══════════════════════════ MATCHED SKILLS ═══════════════════════════ */
+  .matches-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .match-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem;
+    border-left: 3px solid var(--green);
+  }
+
+  .match-card.gap { border-left-color: var(--red); }
+  .match-card.partial { border-left-color: var(--yellow); }
+
+  .match-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.8rem;
+  }
+
+  .match-icon { font-size: 1.2rem; }
+
+  .match-title {
     font-weight: 700;
-    background: linear-gradient(135deg, var(--accent2), var(--green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
   }
 
-  .footer-text {
-    font-size: 0.8rem;
-    color: var(--text3);
+  .match-badge {
+    margin-left: auto;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
   }
 
-  /* ── SCROLL REVEAL ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+  .badge-strong { background: rgba(29,223,138,0.15); color: var(--green); }
+  .badge-gap { background: rgba(255,77,109,0.15); color: var(--red); }
+  .badge-partial { background: rgba(255,209,102,0.12); color: var(--yellow); }
+
+  .match-desc {
+    font-size: 0.83rem;
+    color: var(--muted2);
+    line-height: 1.5;
   }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
+  /* ═══════════════════════════ FOOTER ═══════════════════════════ */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
   }
 
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
+  footer span { color: var(--accent2); }
 
-  /* ── RESPONSIVE ── */
+  /* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
   @media (max-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .score-ring-wrapper { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .score-ring-wrapper { order: -1; }
+    .hero-title { font-size: 2.2rem; }
     .skills-grid { grid-template-columns: 1fr; }
+    .repos-grid { grid-template-columns: repeat(2, 1fr); }
     .weeks-grid { grid-template-columns: repeat(2, 1fr); }
-    .checklist-summary { grid-template-columns: 1fr; }
+    .matches-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
   }
 
   @media (max-width: 600px) {
-    .nav-links { display: none; }
+    .repos-grid { grid-template-columns: 1fr; }
     .weeks-grid { grid-template-columns: 1fr; }
-    .cover-body { padding: 1.5rem; }
-    section { padding: 3rem 0; }
+    .section-title { font-size: 1.5rem; }
+    .hero-title { font-size: 1.8rem; }
+    .ring-container { width: 160px; height: 160px; }
+    .ring-svg { width: 160px; height: 160px; }
+    .ring-score { font-size: 2.4rem; }
   }
 
-  /* Particles */
-  .particle {
-    position: fixed;
-    pointer-events: none;
-    border-radius: 50%;
-    animation: float linear infinite;
+  /* Animations */
+  .fade-up {
     opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
-
-  @keyframes float {
-    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.4; }
-    90% { opacity: 0.2; }
-    100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
-  }
-
-  /* Pulse animation for score */
-  @keyframes pulse-ring {
-    0%, 100% { filter: drop-shadow(0 0 6px rgba(124,110,247,0.4)); }
-    50% { filter: drop-shadow(0 0 16px rgba(124,110,247,0.8)); }
-  }
-
-  .score-ring-fill { animation: pulse-ring 3s ease-in-out infinite 2s; }
-
-  /* Shimmer */
-  @keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
-  }
-
-  .shimmer-text {
-    background: linear-gradient(90deg, var(--accent2) 0%, var(--green) 50%, var(--accent2) 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 4s linear infinite;
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
 </head>
 <body>
 
-<!-- Particles -->
-<div id="particles"></div>
-
-<!-- ── NAVBAR ── -->
+<!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
 <nav>
   <div class="nav-brand">
-    <div class="nav-logo">CC</div>
-    <span class="nav-title">CareerCraft</span>
+    <div class="logo">🎯</div>
+    CareerCraft
   </div>
   <ul class="nav-links">
     <li><a href="#hero">Overview</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#checklist">Prep</a></li>
+    <li><a href="#repos">Repos</a></li>
+    <li><a href="#checklist">Prep Plan</a></li>
     <li><a href="#interview">Interview</a></li>
     <li><a href="#cover">Cover Letter</a></li>
   </ul>
-  <div class="nav-badge">
-    <span class="badge badge-visa">Visa Inc.</span>
-    <span class="badge badge-role">SWE Backend</span>
-  </div>
+  <div class="nav-badge">61 / 100</div>
 </nav>
 
 <main>
 
-<!-- ── HERO ── -->
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
 <section id="hero">
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
   <div class="container">
-    <div class="hero-grid">
-
-      <!-- Left: Info -->
-      <div>
+    <div class="hero-inner">
+      <div class="hero-content">
         <div class="hero-eyebrow">
-          <span class="hero-tag">🎯 CareerCraft Analysis</span>
-          <span class="hero-tag green">Software Engineer — Backend (Go)</span>
+          <span class="hero-tag">👤 shivakumar2006</span>
+          <span class="hero-company-tag">🏢 Visa Inc.</span>
         </div>
-
-        <h1 class="hero-name">shivakumar2006</h1>
-        <div class="hero-role">
-          Targeting <span>Visa Inc.</span> &mdash; Backend Engineer
+        <h1 class="hero-title">
+          Your match report for<br><span>Software Engineer</span><br>at Visa
+        </h1>
+        <div class="hero-verdict">
+          <strong>⚠️ Verdict:</strong> Promising candidate with real Go experience and AI tooling exposure — but needs to close gaps in database integration, testing, and financial systems knowledge before applying.
         </div>
-
         <div class="hero-meta">
-          <div class="hero-meta-item">
-            <span class="hero-meta-value">6</span>
-            <span class="hero-meta-label">Repos Analyzed</span>
+          <div class="meta-item">
+            <span class="meta-label">Repos Analyzed</span>
+            <span class="meta-value">6 repositories</span>
           </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-value">4</span>
-            <span class="hero-meta-label">Languages</span>
+          <div class="meta-item">
+            <span class="meta-label">Languages</span>
+            <span class="meta-value">JS · Go · HTML · TS</span>
           </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-value">3+</span>
-            <span class="hero-meta-label">Hackathons</span>
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Software Engineer</span>
           </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-value shimmer-text">58/100</span>
-            <span class="hero-meta-label">Match Score</span>
+          <div class="meta-item">
+            <span class="meta-label">Generated</span>
+            <span class="meta-value">CareerCraft AI</span>
           </div>
-        </div>
-
-        <div class="hero-langs">
-          <span class="lang-chip">⚡ Go</span>
-          <span class="lang-chip">📜 JavaScript</span>
-          <span class="lang-chip">🌐 HTML</span>
-          <span class="lang-chip">🔷 TypeScript</span>
-        </div>
-
-        <div class="hero-repos">
-          <div class="hero-repos-label">Repositories Reviewed</div>
-          <span class="repo-tag">hackindia-spark-4-ncr-east-region-godvenus</span>
-          <span class="repo-tag">hackindia-spark-6-ncr-central-region-godvenus</span>
-          <span class="repo-tag">hackindia-spark-7-north-region-godvenus</span>
-          <span class="repo-tag">openclaw-hackathon-hackindia-shiva</span>
-          <span class="repo-tag">2nd-gym</span>
-          <span class="repo-tag">Accomplish</span>
         </div>
       </div>
 
-      <!-- Right: Score Ring -->
       <div class="score-ring-wrapper">
-        <div class="score-ring-container">
-          <svg class="score-ring-svg" viewBox="0 0 220 220">
+        <div class="ring-container">
+          <svg class="ring-svg" viewBox="0 0 200 200">
             <defs>
-              <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#7c6ef7"/>
-                <stop offset="100%" stop-color="#1ddf8a"/>
+              <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#7c6ef7"/>
+                <stop offset="100%" style="stop-color:#1ddf8a"/>
               </linearGradient>
             </defs>
-            <circle class="score-ring-bg" cx="110" cy="110" r="90"/>
-            <circle class="score-ring-fill" id="ringFill" cx="110" cy="110" r="90"/>
+            <circle class="ring-track" cx="100" cy="100" r="85"/>
+            <circle class="ring-fill" cx="100" cy="100" r="85" id="mainRing"/>
           </svg>
-          <div class="score-ring-inner">
-            <div class="score-number" id="scoreNum">0</div>
-            <div class="score-out-of">out of 100</div>
-            <div class="score-label">Match Score</div>
+          <div class="ring-center">
+            <div class="ring-score" id="scoreDisplay">0</div>
+            <div class="ring-total">/ 100</div>
           </div>
         </div>
-
-        <div class="score-verdict">
-          <div class="verdict-text">⚡ Promising Junior</div>
-          <div class="verdict-sub">Real Go exposure & AI tooling instincts. Gap: databases, testing & fintech.</div>
-        </div>
-
-        <div class="score-ticks">
-          <div class="tick-item">
-            <div class="tick-dot green"></div>
-            Go & AI tooling ✓
-          </div>
-          <div class="tick-item">
-            <div class="tick-dot yellow"></div>
-            REST APIs (partial) ~
-          </div>
-          <div class="tick-item">
-            <div class="tick-dot yellow"></div>
-            Collaboration (hackathons) ~
-          </div>
-          <div class="tick-item">
-            <div class="tick-dot red"></div>
-            Databases missing ✗
-          </div>
-          <div class="tick-item">
-            <div class="tick-dot red"></div>
-            Testing evidence absent ✗
-          </div>
-          <div class="tick-item">
-            <div class="tick-dot red"></div>
-            Fintech domain absent ✗
-          </div>
-        </div>
+        <div class="ring-label">Match Score</div>
+        <div class="ring-verdict-badge">⚡ Promising</div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ── SKILLS ── -->
+<!-- ═══════════════════════════ SKILLS BREAKDOWN ═══════════════════════════ -->
 <section id="skills">
   <div class="container">
-    <div class="reveal">
-      <div class="section-label">Skill Analysis</div>
-      <h2 class="section-title">Competency Breakdown</h2>
-      <p class="section-subtitle">Weighted against Visa's Software Engineer — Backend (Go) job requirements.</p>
+    <div class="section-label">Analysis</div>
+    <h2 class="section-title">Skills Breakdown</h2>
+    <p class="section-sub">Weighted scoring across 7 key competency areas for Visa's Software Engineer role.</p>
+
+    <!-- Score Table -->
+    <div class="fade-up" style="margin-bottom:2.5rem; overflow-x:auto;">
+      <table class="score-table">
+        <thead>
+          <tr>
+            <th>Skill Area</th>
+            <th>Weight</th>
+            <th>Your Score</th>
+            <th>Weighted</th>
+            <th>Bar</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="scoreTableBody">
+        </tbody>
+      </table>
     </div>
 
-    <div class="skills-grid">
+    <!-- Skill Cards -->
+    <div class="skills-grid" id="skillCards"></div>
+  </div>
+</section>
 
-      <div class="skill-card reveal reveal-delay-1" data-score="70" data-bar="bar-mid" data-badge="score-mid">
-        <div class="skill-header">
-          <div class="skill-info">
-            <div class="skill-name">Go / Backend Languages</div>
-            <div class="skill-category">Core Technical · Weight 25%</div>
-          </div>
-          <div>
-            <div class="skill-score-badge score-mid">70/100</div>
-            <div class="skill-weight">+17.5 pts</div>
-          </div>
+<!-- ═══════════════════════════ REPOS ═══════════════════════════ -->
+<section id="repos">
+  <div class="container">
+    <div class="section-label">GitHub Repos</div>
+    <h2 class="section-title">Analyzed Repositories</h2>
+    <p class="section-sub">6 repositories scanned for language depth, patterns, and relevance to Visa's stack.</p>
+    <div class="repos-grid" id="reposGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ MATCHED SKILLS ═══════════════════════════ -->
+<section id="matches">
+  <div class="container">
+    <div class="section-label">Fit Analysis</div>
+    <h2 class="section-title">Strengths & Gaps</h2>
+    <p class="section-sub">Where you shine and where you need to build before applying.</p>
+    <div class="matches-grid" id="matchesGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ 4-WEEK CHECKLIST ═══════════════════════════ -->
+<section id="checklist">
+  <div class="container">
+    <div class="section-label">Prep Plan</div>
+    <h2 class="section-title">4-Week Action Plan</h2>
+    <p class="section-sub">Your personalized roadmap to close skill gaps and ace the Visa interview. Progress saves automatically.</p>
+    <div class="weeks-grid" id="weeksGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ INTERVIEW ACCORDION ═══════════════════════════ -->
+<section id="interview">
+  <div class="container">
+    <div class="section-label">Interview Prep</div>
+    <h2 class="section-title">Interview Questions</h2>
+    <p class="section-sub">Tailored questions based on your profile and Visa's known interview process.</p>
+    <div class="accordion" id="accordionList"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ COVER LETTER ═══════════════════════════ -->
+<section id="cover">
+  <div class="container">
+    <div class="section-label">Application</div>
+    <h2 class="section-title">Cover Letter</h2>
+    <p class="section-sub">AI-generated cover letter tailored to Visa's Software Engineer role and your GitHub profile.</p>
+    <div class="cover-wrapper fade-up">
+      <div class="cover-toolbar">
+        <div class="cover-toolbar-left">
+          <div class="cover-dot"></div>
+          cover-letter-visa-shivakumar2006.txt
         </div>
-        <div class="skill-bar-track">
-          <div class="skill-bar-fill bar-mid" data-width="70"></div>
-        </div>
-        <p class="skill-note">13 Go repos including <code style="background:rgba(124,110,247,0.15);padding:0.1rem 0.4rem;border-radius:4px;font-family:monospace;font-size:0.8em;color:#9d92f8">API-GO</code>, <code style="background:rgba(124,110,247,0.15);padding:0.1rem 0.4rem;border-radius:4px;font-family:monospace;font-size:0.8em;color:#9d92f8">auto-checkpoint</code>, binarysearch. Strong learning trajectory.</p>
+        <button class="copy-btn" id="copyBtn" onclick="copyCoverLetter()">
+          📋 Copy Letter
+        </button>
       </div>
+      <div class="cover-body" id="coverBody"></div>
+    </div>
+  </div>
+</section>
 
-      <div class="skill-card reveal reveal-delay-2" data-score="55" data-bar="bar-mid" data-badge="score-mid">
-        <div class="skill-header">
-          <div class="skill-info">
-            <div class="skill-name">REST APIs & OpenAPI/Swagger</div>
-            <div class="skill-category">Architecture · Weight 20%</div>
-          </div>
-          <div>
-            <div class="skill-score-badge score-mid">55/100</div>
-            <div class="skill-weight">+11.0 pts</div>
-          </div>
+</main>
+
+<footer>
+  <p>Built with ❤️ by <span>CareerCraft AI</span> · shivakumar2006 × Visa Inc. · Software Engineer Analysis</p>
+</footer>
+
+<script>
+// ═══════════════════════════ DATA ═══════════════════════════
+const SKILLS = [
+  {
+    name: "Go / Backend Language",
+    weight: 25,
+    score: 70,
+    weighted: 17.5,
+    desc: "13 Go repos including API-GO, auto-checkpoint, binarysearch — solid signal, depth varies across projects.",
+    color: "#7c6ef7"
+  },
+  {
+    name: "REST API Design",
+    weight: 20,
+    score: 60,
+    weighted: 12.0,
+    desc: "API-GO is directly relevant, but no visible Swagger/OpenAPI documentation found across repos.",
+    color: "#9d91ff"
+  },
+  {
+    name: "Relational Databases",
+    weight: 20,
+    score: 25,
+    weighted: 5.0,
+    desc: "Notion task shows PostgreSQL intent, but no shipped database code or schema found yet.",
+    color: "#ff4d6d"
+  },
+  {
+    name: "Testing (Unit/Integration)",
+    weight: 15,
+    score: 20,
+    weighted: 3.0,
+    desc: "No visible test files across any repos — this is a critical gap for production-grade Visa systems.",
+    color: "#ff4d6d"
+  },
+  {
+    name: "AI-Powered Dev Tools",
+    weight: 10,
+    score: 85,
+    weighted: 8.5,
+    desc: "ai-code-reviewer, ai-diagnosis-app, autoai-mcp-builder — strong signal in AI tooling space.",
+    color: "#1ddf8a"
+  },
+  {
+    name: "Distributed Systems / Cloud",
+    weight: 5,
+    score: 30,
+    weighted: 1.5,
+    desc: "chaos-command-center hints at ops-level thinking, but overall evidence remains thin.",
+    color: "#ffd166"
+  },
+  {
+    name: "Financial / Payments Domain",
+    weight: 5,
+    score: 15,
+    weighted: 0.75,
+    desc: "crypto-app is loosely adjacent to payments — not directly relevant to Visa's core domain.",
+    color: "#ffd166"
+  }
+];
+
+const REPOS = [
+  { name: "hackindia-spark-4-ncr-east-region-godvenus", icon: "⚡", langs: ["go", "html"] },
+  { name: "hackindia-spark-6-ncr-central-region-godvenus", icon: "🔥", langs: ["js", "html"] },
+  { name: "hackindia-spark-7-north-region-godvenus", icon: "🚀", langs: ["ts", "go"] },
+  { name: "openclaw-hackathon-hackindia-shiva", icon: "🦀", langs: ["go", "js"] },
+  { name: "2nd-gym", icon: "💪", langs: ["js", "html"] },
+  { name: "Accomplish", icon: "✅", langs: ["ts", "js"] }
+];
+
+const LANG_MAP = {
+  go: "lang-go",
+  js: "lang-js",
+  ts: "lang-ts",
+  html: "lang-html"
+};
+
+const MATCHES = [
+  {
+    type: "strong",
+    icon: "🟢",
+    title: "Go Programming",
+    badge: "Strong Match",
+    badgeClass: "badge-strong",
+    desc: "Visa's core backend is Go. Your 13 Go repos — including API-GO and auto-checkpoint — show consistent language investment. This is your strongest card to lead with in interviews."
+  },
+  {
+    type: "strong",
+    icon: "🟢",
+    title: "AI Dev Tooling",
+    badge: "Strong Match",
+    badgeClass: "badge-strong",
+    desc: "Projects like ai-code-reviewer and autoai-mcp-builder show you're building with modern AI APIs. Visa's engineering blog shows growing investment in developer productivity tooling."
+  },
+  {
+    type: "partial",
+    icon: "🟡",
+    title: "REST API Design",
+    badge: "Partial Match",
+    badgeClass: "badge-partial",
+    desc: "API-GO demonstrates API awareness, but missing documentation (Swagger/OpenAPI), versioning patterns, and error handling standards that Visa's production APIs require."
+  },
+  {
+    type: "partial",
+    icon: "🟡",
+    title: "Hackathon Experience",
+    badge: "Contextual",
+    badgeClass: "badge-partial",
+    desc: "4 HackIndia repos signal problem-solving under pressure and teamwork — soft skills Visa values. Frame this as rapid prototyping and collaboration in interviews."
+  },
+  {
+    type: "gap",
+    icon: "🔴",
+    title: "Database Integration",
+    badge: "Critical Gap",
+    badgeClass: "badge-gap",
+    desc: "No shipped PostgreSQL/MySQL code found. Visa's payment systems are heavily database-driven. Build at minimum 1 project using GORM + PostgreSQL with migrations before applying."
+  },
+  {
+    type: "gap",
+    icon: "🔴",
+    title: "Test Coverage",
+    badge: "Critical Gap",
+    badgeClass: "badge-gap",
+    desc: "Zero test files detected across all repos. Visa explicitly values testing in their JD. Add Go table-driven tests and integration tests to your top repos immediately — this is a deal-breaker gap."
+  }
+];
+
+const WEEKS = [
+  {
+    title: "Go & API Depth",
+    color: "#7c6ef7",
+    tasks: [
+      { id: "w1t1", text: "Complete Go's official tour (tour.golang.org) focusing on goroutines" },
+      { id: "w1t2", text: "Add OpenAPI/Swagger docs to your API-GO repo" },
+      { id: "w1t3", text: "Implement error handling middleware in an existing Go project" },
+      { id: "w1t4", text: "Build a Go REST API with Gin framework + proper routing" },
+      { id: "w1t5", text: "Write your first Go benchmark test using testing.B" }
+    ]
+  },
+  {
+    title: "Database & Testing",
+    color: "#ff4d6d",
+    tasks: [
+      { id: "w2t1", text: "Set up PostgreSQL locally and connect via Go's database/sql" },
+      { id: "w2t2", text: "Build a CRUD app using GORM + PostgreSQL with schema migrations" },
+      { id: "w2t3", text: "Write 10 unit tests using Go's built-in testing package" },
+      { id: "w2t4", text: "Learn table-driven tests — cover edge cases in your API handlers" },
+      { id: "w2t5", text: "Add a CI/CD pipeline (GitHub Actions) that runs your tests" }
+    ]
+  },
+  {
+    title: "Payments & Domain",
+    color: "#ffd166",
+    tasks: [
+      { id: "w3t1", text: "Read Visa Developer Center docs — understand tokenization basics" },
+      { id: "w3t2", text: "Study ISO 8583 message format (payment protocol fundamentals)" },
+      { id: "w3t3", text: "Build a mock payment processing API with idempotency keys" },
+      { id: "w3t4", text: "Learn about PCI-DSS compliance at a conceptual level" },
+      { id: "w3t5", text: "Implement basic rate limiting in your Go API (token bucket pattern)" }
+    ]
+  },
+  {
+    title: "Interview Polish",
+    color: "#1ddf8a",
+    tasks: [
+      { id: "w4t1", text: "Practice 5 system design questions (payment system, rate limiter)" },
+      { id: "w4t2", text: "Solve 20 LeetCode Mediums in Go (focus on arrays, maps, graphs)" },
+      { id: "w4t3", text: "Prepare STAR stories from your hackathon projects" },
+      { id: "w4t4", text: "Record yourself answering 'Walk me through your best Go project'" },
+      { id: "w4t5", text: "Research Visa's recent engineering blog posts and tech stack choices" }
+    ]
+  }
+];
+
+const QUESTIONS = [
+  {
+    num: 1,
+    tag: "Technical",
+    tagClass: "tag-tech",
+    q: "Walk me through how you structure a Go project for a production-ready REST API. What packages and patterns do you typically use?",
+    hint: "Reference your <strong>API-GO repository</strong> directly — mention package separation (handlers, models, routes, middleware). Talk about using <strong>net/http or Gin/Echo</strong>, and explain why you chose them. Emphasize clean separation of concerns and how it maps to maintainability. Mention how you'd add OpenAPI docs and health check endpoints."
+  },
+  {
+    num: 2,
+    tag: "Technical",
+    tagClass: "tag-tech",
+    q: "How does Go handle concurrency, and can you give a practical example where goroutines and channels solved a real problem in your projects?",
+    hint: "Explain <strong>goroutines vs threads</strong> (M:N scheduling, cheap stack). Mention the <strong>channel</strong> as a communication primitive vs shared memory with mutexes. Connect to your hackathon repos — even if concurrency wasn't explicit, talk about how you'd redesign a handler to process multiple payment events concurrently. Mention <strong>context.Context</strong> for cancellation."
+  },
+  {
+    num: 3,
+    tag: "Database",
+    tagClass: "tag-db",
+    q: "Visa's systems process billions of transactions. How would you design a database schema for a payment transaction ledger that needs to support high reads and idempotent writes?",
+    hint: "Key concepts: <strong>idempotency keys</strong> (UUID per request), <strong>append-only ledger pattern</strong>, proper indexing on transaction_id + created_at. Mention <strong>PostgreSQL</strong> with row-level locking, <strong>UPSERT with ON CONFLICT</strong> for idempotency. Talk about <strong>read replicas</strong> for analytics vs write primary. Acknowledge your current gap honestly if pressed."
+  },
+  {
+    num: 4,
+    tag: "System Design",
+    tagClass: "tag-sys",
+    q: "Design a rate limiter service for Visa's API gateway that needs to handle 50,000 requests per second across multiple regions.",
+    hint: "Cover <strong>token bucket vs sliding window</strong> algorithms. For distributed rate limiting, mention <strong>Redis with atomic INCR + EXPIRE</strong> or Redis' built-in rate limiter. Discuss <strong>eventual consistency trade-offs</strong> — exact vs approximate rate limiting. Mention cell-based architecture for regional isolation. Reference your Go skills for the implementation layer."
+  },
+  {
+    num: 5,
+    tag: "Technical",
+    tagClass: "tag-tech",
+    q: "Your current repos have no visible test files. How do you approach testing in Go, and what would you add to your API-GO project first?",
+    hint: "Be honest but forward-looking. Explain Go's <strong>testing package</strong>, table-driven tests, and httptest for HTTP handlers. Say you'd add: unit tests for business logic, integration tests for DB operations, and mocks using <strong>interfaces</strong>. Mention <strong>testify/assert</strong> for readability. Show you understand the WHY — catching regressions in payment logic is safety-critical."
+  },
+  {
+    num: 6,
+    tag: "Behavioral",
+    tagClass: "tag-beh",
+    q: "Tell me about a time at a hackathon where you had to make a critical technical decision under time pressure. What was the tradeoff and what did you learn?",
+    hint: "Use the <strong>STAR format</strong>: Situation (hackathon context), Task (what needed deciding), Action (your reasoning — e.g., 'chose REST over gRPC because frontend teammates knew HTTP better'), Result (what shipped and what you'd do differently). Connect to Visa's values of <strong>reliability and pragmatic engineering</strong>. Pick your strongest hackathon story."
+  },
+  {
+    num: 7,
+    tag: "System Design",
+    tagClass: "tag-sys",
+    q: "How would you monitor a payment processing microservice in production? What metrics, logs, and alerts would you set up?",
+    hint: "Cover the <strong>four golden signals</strong>: latency, traffic, errors, saturation. For payments specifically: <strong>transaction success rate, p99 latency, failed payment count</strong>. Mention <strong>Prometheus + Grafana</strong> for metrics, structured JSON logging, distributed tracing with OpenTelemetry. Set alerts on: error rate > 0.1%, latency p99 > 500ms. Show operational maturity beyond just coding."
+  },
+  {
+    num: 8,
+    tag: "Behavioral",
+    tagClass: "tag-beh",
+    q: "Visa processes transactions for billions of people. How do you personally approach writing code where bugs could cause financial harm?",
+    hint: "Key themes: <strong>defensive programming</strong> (validate all inputs), comprehensive testing, code reviews as a safety net, <strong>circuit breakers</strong> for downstream failures. Mention immutable audit logs — every state change recorded. Reference your AI tools projects as evidence you think about <strong>reliability by design</strong>. Show you take the responsibility seriously without being paralyzed by it."
+  }
+];
+
+const COVER_LETTER = `Dear Hiring Manager at Visa Inc.,
+
+I am excited to apply for the Software Engineer role at Visa Inc., a company whose infrastructure quite literally powers the way the world moves money. What draws me to Visa is not just the scale of the technology, but the precision and reliability that financial systems demand at every layer.
+
+I am a developer with hands-on experience in Go and JavaScript, and I have been actively sharpening my backend skills through real-world projects and competitive hackathons. My Go repositories — including API-GO and auto-checkpoint — reflect my commitment to building production-aware backend systems, even while I continue to grow. I understand that at Visa's scale, every API endpoint must be designed with idempotency, observability, and fault tolerance in mind from day one.
+
+Beyond core backend work, I have been deeply interested in how AI tooling can accelerate developer productivity. Projects like my ai-code-reviewer and autoai-mcp-builder show my ability to integrate LLM APIs into developer workflows — which I believe aligns with Visa's growing investment in internal developer experience platforms.
+
+Through four consecutive HackIndia competitions, I have learned to ship working software under pressure, navigate ambiguous requirements, and collaborate across disciplines. These experiences have given me an appreciation for the kind of pragmatic engineering discipline that Visa's mission requires.
+
+I recognize I have meaningful gaps to close — particularly in database integration and comprehensive test coverage — and I am actively addressing both. I have begun building a PostgreSQL-backed payment ledger project using Go and GORM, and I am adding table-driven unit tests across my existing repos.
+
+I would welcome the opportunity to discuss how my Go expertise, AI tooling experience, and hunger to work on consequential systems make me a strong investment for Visa's engineering team.
+
+Thank you for your consideration.
+
+Sincerely,
+shivakumar2006`;
+
+// ═══════════════════════════ RENDER FUNCTIONS ═══════════════════════════
+
+function getBarColor(score) {
+  if (score >= 70) return "linear-gradient(90deg, #7c6ef7, #1ddf8a)";
+  if (score >= 40) return "linear-gradient(90deg, #ffd166, #f0a500)";
+  return "linear-gradient(90deg, #ff4d6d, #c0392b)";
+}
+
+function renderScoreTable() {
+  const tbody = document.getElementById("scoreTableBody");
+  tbody.innerHTML = SKILLS.map(s => `
+    <tr>
+      <td class="td-name">${s.name}</td>
+      <td class="td-weight">${s.weight}%</td>
+      <td class="td-score">${s.score}/100</td>
+      <td class="td-weighted">${s.weighted}</td>
+      <td>
+        <div class="mini-bar">
+          <div class="mini-bar-fill" data-w="${s.score}" style="background:${getBarColor(s.score)}; width:0%"></div>
         </div>
-        <div class="skill-bar-track">
-          <div class="skill-bar-fill bar-mid" data-width="55"></div>
+      </td>
+      <td style="color:var(--muted2);font-size:0.78rem">${s.desc.substring(0,60)}…</td>
+    </tr>
+  `).join('');
+}
+
+function renderSkillCards() {
+  const container = document.getElementById("skillCards");
+  container.innerHTML = SKILLS.map((s, i) => `
+    <div class="skill-card fade-up" style="transition-delay:${i * 0.08}s">
+      <div class="skill-header">
+        <div class="skill-name">${s.name}</div>
+        <div class="skill-meta">
+          <span class="skill-pct">${s.score}%</span>
+          <span class="skill-weighted">×${s.weight}% = ${s.weighted}pts</span>
         </div>
-        <p class="skill-note">API-GO suggests REST work, but no Swagger/OpenAPI documentation evidence found. Needs explicit REST API projects.</p>
       </div>
+      <div class="skill-desc">${s.desc}</div>
+      <div class="skill-bar-track">
+        <div class="skill-bar-fill" data-w="${s.score}" style="background:${getBarColor(s.score)}"></div>
+      </div>
+    </div>
+  `).join('');
+}
 
-      <div class="skill-card reveal reveal-delay-3" data-score="20" data-bar="bar-low" data-badge="score-low">
-        <div class="skill-header">
-          <div class="skill-info">
-            <div class="skill-name">Relational Databases (PostgreSQL/MySQL)</div>
-            <div class="skill-category">Data Layer · Weight 20%</div>
-          </div>
-          <div>
-            <div class="skill-score-badge score-low">20/100</div>
-            <div class="skill-weight">+4.0 pts</div>
-          </div>
-        
+function renderRepos() {
+  const container = document.getElementById("reposGrid");
+  container.innerHTML = REPOS.map((r, i) => `
+    <div class="repo-card fade-up" style="transition-delay:${i * 0.08}s">
+      <div class="repo-icon">${r.icon}</div>
+      <div class="repo-name">${r.name}</div>
+      <div class="repo-langs">
+        ${r.langs.map(l => `<span class="lang-tag ${LANG_MAP[l] || 'lang-other'}">${l.toUpperCase()}</span>`).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderMatches() {
+  const container = document.getElementById("matchesGrid");
+  container.innerHTML = MATCHES.map((m, i) => `
+    <div class="match-card ${m.type === 'gap' ? 'gap' : m.type === 'partial' ? 'partial' : ''} fade-up" style="transition-delay:${i * 0.08}s">
+      <div class="match-header">
+        <span class="match-icon">${m.icon}</span>
+        <span class="match-title">${m.title}</span>
+        <span class="match-badge ${m.badgeClass}">${m.badge}</span>
+      </div>
+      <div class="match-desc">${m.desc}</div>
+    </div>
+  `).join('');
+}
+
+function renderChecklist() {
+  const container = document.getElementById("weeksGrid");
+  container.innerHTML = WEEKS.map((week, wi) => {
+    const tasks = week.tasks.map((t, ti) => {
+      const saved = localStorage.getItem(t.id) === 'true';
+      return `
+        <label class="checklist-item ${saved ? 'done' : ''}" data-id="${t.id}">
+          <input type="checkbox" ${saved ? 'checked' : ''} onchange="handleCheck('${t.id}', this, ${wi})">
+          <span class="checklist-text">${t.text}</span>
+        </label>
+      `;
+    }).join('');
+
+    const doneCount = week.tasks.filter(t => localStorage.getItem(t.id) === 'true').length;
+    const pct = Math.round((doneCount / week.tasks.length) * 100);
+
+    return `
+      <div class="week-card fade-up" style="transition-delay:${wi * 0.1}s" id="week-card-${wi}">
+        <div class="week-header">
+          <div class="week-num">${wi + 1}</div>
+          <div class="week-title">Week ${wi + 1}<br>${week.title}</div>
+        </div>
+        <div class="week-progress-bar">
+          <div class="week-progress-fill" id="week-prog-${wi}" style="width:${pct}%"></div>
+        </div>
+        <div class="week-count" id="week-count-${wi}">${doneCount}/${week.tasks.length} tasks complete</div>
+        <div class="checklist-items">${tasks}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function handleCheck(id, el, weekIdx) {
+  localStorage.setItem(id, el.checked);
+  const label = el.parentElement;
+  label.classList.toggle('done', el.checked);
+  updateWeekProgress(weekIdx);
+}
+
+function updateWeekProgress(wi) {
+  const week = WEEKS[wi];
+  const doneCount = week.tasks.filter(t => localStorage.getItem(t.id) === 'true').length;
+  const pct = Math.round((doneCount / week.tasks.length) * 100);
+  const progEl = document.getElementById(`week-prog-${wi}`);
+  const countEl = document.getElementById(`week-count-${wi}`);
+  if (progEl) progEl.style.width = pct + '%';
+  if (countEl) countEl.textContent = `${doneCount}/${week.tasks.length} tasks complete`;
+}
+
+function renderAccordion() {
+  const container = document.getElementById("accordionList");
+  container.innerHTML = QUESTIONS.map((q, i) => `
+    <div class="acc-item fade-up" style="transition-delay:${i * 0.06}s" id="acc-${i}">
+      <div class="acc-header" onclick="toggleAcc(${i})">
+        <div class="acc-left">
+          <div class="acc-num">${q.num}</div>
+          <div class="acc-q">${q.q}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+          <span class="acc-tag ${q.tagClass}">${q.tag}</span>
+          <span class="acc-arrow">▼</span>
+        </div>
+      </div>
+      <div class="acc-body">
+        <div class="acc-hint">💡 <strong>Hint:</strong> ${q.hint}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleAcc(i) {
+  const item = document.getElementById(`acc-${i}`);
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.acc-item').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function renderCoverLetter() {
+  const el = document.getElementById("coverBody");
+  el.innerHTML = COVER_LETTER.split('\n\n').map(p => `<div class="para">${p}</div>`).join('');
+}
+
+function copyCoverLetter() {
+  navigator.clipboard.writeText(COVER_LETTER).then(() => {
+    const btn = document.getElementById("copyBtn");
+    btn.textContent = "✅ Copied!";
+    btn.classList.add("copied");
+    setTimeout(() => {
+      btn.textContent = "📋 Copy Letter";
+      btn.classList.remove("copied");
+    }, 2500);
+  });
+}
+
+// ═══════════════════════════ SCORE ANIMATION ═══════════════════════════
+function animateScore() {
+  const target = 61;
+  const circumference = 2 * Math.PI * 85;
+  const offset = circumference - (target / 100) * circumference;
+
+  let current = 0;
+  const duration = 2000;
+  const startTime = performance.now();
+
+  function step(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    current = Math.round(ease * target);
+
+    document.getElementById("scoreDisplay").textContent = current;
+    document.getElementById("mainRing").style.strokeDashoffset =
+      circumference - (current / 100) * circumference;
+
+    if (progress < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+// ═══════════════════════════ BAR ANIMATIONS ═══════════════════════════
+function animateBars() {
+  const fills = document.querySelectorAll('.skill-bar-fill, .mini-bar-fill');
+  fills.forEach(el => {
+    const w = el.dataset.w;
+    el.style.width = w + '%';
+  });
+}
+
+// ═══════════════════════════ INTERSECTION OBSERVER ═══════════════════════════
+function initObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+
+function initBarObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateBars();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+
+  const skillsSection = document.getElementById("skills");
+  if (skillsSection) observer.observe(skillsSection);
+}
+
+function initScoreObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateScore();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const hero = document.getElementById("hero");
+  if (hero) observer.observe(hero);
+}
+
+// ═══════════════════════════ INIT ═══════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  renderScoreTable();
+  renderSkillCards();
+  renderRepos();
+  renderMatches();
+  renderChecklist();
+  renderAccordion();
+  renderCoverLetter();
+
+  setTimeout(() => {
+    initObserver();
+    initBarObserver();
+    initScoreObserver();
+  }, 100);
+});
+</script>
+</body>
+</html>
+```

@@ -99,10 +99,11 @@ export default function Chat() {
 I have real-time access to your GitHub profile and Notion workspace via Coral SQL.
 
 Ask me anything:
-• "Mera best Go project konsa hai?"
-• "Aaj kya karna hai mujhe?"
-• "Zerodha ke liye kaunsi skills missing hain?"
-• "Is week kya complete kiya?"
+• "Which is the best Go project for my resume?",
+• "What shoud i do today?"
+• "What skills are missing for Zerodha?",
+• "Summarize my GitHub activity",
+• "What did I complete this week?"
 
 What's on your mind?`,
         }

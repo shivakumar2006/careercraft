@@ -102,6 +102,16 @@ def detect_intent(message: str) -> str:
     msg = message.lower()
 
     if any(w in msg for w in [
+        "careercraft",
+        "architecture",
+        "review project",
+        "project review",
+        "engineering manager review",
+        "analyze project"
+    ]):
+        return "project_intelligence"
+
+    if any(w in msg for w in [
         "career manager",
         "overview",
         "full briefing",
