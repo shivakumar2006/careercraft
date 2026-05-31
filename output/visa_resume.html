@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shivakumar | Software Engineer – Visa Inc.</title>
+<title>Shivakumar — Software Engineer | Visa Inc.</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -11,16 +11,17 @@
   :root {
     --bg: #0d1117;
     --card: #161b22;
-    --card-hover: #1c2333;
+    --card-hover: #1c2128;
     --border: #30363d;
     --blue: #58a6ff;
     --green: #3fb950;
     --purple: #bc8cff;
     --orange: #f0883e;
     --text: #e6edf3;
-    --muted: #8b949e;
-    --mono: 'JetBrains Mono', monospace;
-    --sans: 'Inter', sans-serif;
+    --text-muted: #8b949e;
+    --text-subtle: #6e7681;
+    --font-body: 'Inter', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
   }
 
   html { scroll-behavior: smooth; }
@@ -28,31 +29,30 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: var(--sans);
+    font-family: var(--font-body);
     font-size: 15px;
-    line-height: 1.65;
+    line-height: 1.6;
     min-height: 100vh;
   }
 
-  /* ── Layout ── */
-  .page {
+  .page-wrapper {
     max-width: 900px;
     margin: 0 auto;
-    padding: 2.5rem 1.5rem 4rem;
+    padding: 32px 24px 64px;
   }
 
-  /* ── Header ── */
-  header {
+  /* ── HEADER ── */
+  .header {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 2.5rem 2.5rem 2rem;
-    margin-bottom: 1.5rem;
+    padding: 36px 40px;
+    margin-bottom: 24px;
     position: relative;
     overflow: hidden;
   }
 
-  header::before {
+  .header::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
@@ -60,722 +60,571 @@
     background: linear-gradient(90deg, var(--blue), var(--purple), var(--green));
   }
 
-  .header-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1.5rem;
-    align-items: start;
-  }
-
-  .header-name {
-    font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.2;
-    margin-bottom: 0.3rem;
-  }
-
-  .header-role {
-    font-size: 1rem;
-    color: var(--muted);
-    font-family: var(--mono);
-    margin-bottom: 1rem;
-  }
-
-  .header-role span { color: var(--green); }
-
-  .contact-row {
+  .header-inner {
     display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
     flex-wrap: wrap;
-    gap: 0.75rem 1.5rem;
-    font-size: 0.82rem;
-    color: var(--muted);
   }
 
-  .contact-row a {
+  .header-left { flex: 1; min-width: 220px; }
+
+  .avatar-name { display: flex; align-items: center; gap: 20px; margin-bottom: 12px; }
+
+  .avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-code);
+    font-size: 24px; font-weight: 600;
+    color: #fff;
+    flex-shrink: 0;
+    border: 2px solid var(--border);
+  }
+
+  .name-block h1 {
+    font-size: 28px; font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .name-block .role {
+    font-family: var(--font-code);
+    font-size: 13px;
     color: var(--blue);
+    margin-top: 4px;
+  }
+
+  .contact-links {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    margin-top: 16px;
+  }
+
+  .contact-links a {
+    display: flex; align-items: center; gap: 6px;
+    color: var(--text-muted);
     text-decoration: none;
-    font-family: var(--mono);
+    font-size: 13px;
+    font-family: var(--font-code);
     transition: color 0.2s;
   }
 
-  .contact-row a:hover { color: var(--purple); }
+  .contact-links a:hover { color: var(--blue); }
 
-  /* ── Match Score Badge ── */
+  .contact-links svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* Match Score Badge */
   .match-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
+    display: flex; flex-direction: column; align-items: center;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.2rem 1.5rem;
-    min-width: 140px;
-    text-align: center;
+    padding: 16px 20px;
+    min-width: 130px;
+    flex-shrink: 0;
   }
 
-  .match-label {
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--muted);
-    font-family: var(--mono);
+  .match-badge .label {
+    font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--text-subtle);
+    margin-bottom: 8px;
+    font-family: var(--font-code);
   }
 
-  .match-number {
-    font-size: 2.8rem;
-    font-weight: 700;
-    font-family: var(--mono);
+  .score-ring {
+    position: relative;
+    width: 72px; height: 72px;
+  }
+
+  .score-ring svg { transform: rotate(-90deg); }
+
+  .score-ring .track { fill: none; stroke: var(--border); stroke-width: 6; }
+
+  .score-ring .fill {
+    fill: none;
+    stroke: var(--orange);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 188.4;
+    stroke-dashoffset: 79.1; /* 100 - 58 = 42% of 188.4 */
+    transition: stroke-dashoffset 1s ease;
+  }
+
+  .score-ring .score-text {
+    position: absolute;
+    inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-family: var(--font-code);
+  }
+
+  .score-ring .score-num {
+    font-size: 20px; font-weight: 700;
     color: var(--orange);
     line-height: 1;
   }
 
-  .match-total {
-    font-size: 0.75rem;
-    color: var(--muted);
-    font-family: var(--mono);
+  .score-ring .score-denom {
+    font-size: 10px;
+    color: var(--text-subtle);
+    line-height: 1;
+    margin-top: 2px;
   }
 
-  .match-bar {
-    width: 100%;
-    height: 5px;
-    background: var(--border);
-    border-radius: 999px;
-    overflow: hidden;
-    margin-top: 0.4rem;
+  .match-badge .match-label {
+    font-size: 11px;
+    color: var(--orange);
+    font-weight: 600;
+    margin-top: 8px;
+    font-family: var(--font-code);
   }
 
-  .match-bar-fill {
-    height: 100%;
-    width: 54%;
-    background: linear-gradient(90deg, var(--orange), var(--purple));
-    border-radius: 999px;
-    animation: fillBar 1.2s ease forwards;
-  }
-
-  @keyframes fillBar {
-    from { width: 0; }
-    to { width: 54%; }
-  }
-
-  .match-role-tag {
-    font-size: 0.65rem;
-    font-family: var(--mono);
-    color: var(--blue);
-    margin-top: 0.25rem;
-  }
-
-  /* ── Section ── */
-  section {
-    margin-bottom: 1.5rem;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
+  /* ── SECTION TITLES ── */
+  .section { margin-bottom: 24px; }
 
   .section-title {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--muted);
-    font-family: var(--mono);
-    font-weight: 500;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    font-family: var(--font-code);
   }
 
-  .section-line {
+  .section-title::after {
+    content: '';
     flex: 1;
     height: 1px;
     background: var(--border);
   }
 
-  /* ── Cards ── */
-  .card {
+  .section-title svg { width: 16px; height: 16px; color: var(--blue); }
+
+  /* ── SUMMARY ── */
+  .summary-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.4rem 1.5rem;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    padding: 20px 24px;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.75;
     position: relative;
     overflow: hidden;
+    transition: border-color 0.2s, background 0.2s;
   }
 
-  .card:hover {
+  .summary-card:hover {
+    border-color: var(--blue);
     background: var(--card-hover);
-    border-color: #484f58;
-    transform: translateY(-2px);
   }
 
-  /* ── Summary ── */
-  .summary-card {
-    composes: card;
-  }
+  .summary-card .highlight { color: var(--blue); font-weight: 600; }
+  .summary-card .highlight-green { color: var(--green); font-weight: 600; }
+  .summary-card .highlight-purple { color: var(--purple); font-weight: 600; }
 
-  .summary-text {
-    color: #c9d1d9;
-    font-size: 0.93rem;
-    line-height: 1.75;
-  }
-
-  .summary-text strong {
-    color: var(--blue);
-    font-weight: 600;
-  }
-
-  /* ── Skills ── */
+  /* ── SKILLS ── */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 14px;
   }
 
-  .skill-group {
+  .skill-category {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.1rem 1.2rem;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    border-radius: 10px;
+    padding: 16px;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
   }
 
-  .skill-group:hover {
+  .skill-category:hover {
+    border-color: var(--purple);
     background: var(--card-hover);
-    border-color: #484f58;
     transform: translateY(-2px);
   }
 
-  .skill-group-title {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    margin-bottom: 0.7rem;
-    font-family: var(--mono);
-    font-weight: 600;
+  .skill-cat-title {
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-subtle);
+    margin-bottom: 10px;
+    font-family: var(--font-code);
   }
 
-  .skill-group-title.blue { color: var(--blue); }
-  .skill-group-title.green { color: var(--green); }
-  .skill-group-title.purple { color: var(--purple); }
-  .skill-group-title.orange { color: var(--orange); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .tag {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    padding: 0.2rem 0.55rem;
-    border-radius: 6px;
+  .skill-tag {
+    font-family: var(--font-code);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
     font-weight: 500;
   }
 
-  .tag-blue { background: rgba(88,166,255,0.12); color: var(--blue); border: 1px solid rgba(88,166,255,0.2); }
-  .tag-green { background: rgba(63,185,80,0.12); color: var(--green); border: 1px solid rgba(63,185,80,0.2); }
-  .tag-purple { background: rgba(188,140,255,0.12); color: var(--purple); border: 1px solid rgba(188,140,255,0.2); }
-  .tag-orange { background: rgba(240,136,62,0.12); color: var(--orange); border: 1px solid rgba(240,136,62,0.2); }
-  .tag-muted { background: rgba(139,148,158,0.1); color: var(--muted); border: 1px solid rgba(139,148,158,0.15); }
+  .tag-blue { background: rgba(88,166,255,0.12); color: var(--blue); border: 1px solid rgba(88,166,255,0.25); }
+  .tag-green { background: rgba(63,185,80,0.12); color: var(--green); border: 1px solid rgba(63,185,80,0.25); }
+  .tag-purple { background: rgba(188,140,255,0.12); color: var(--purple); border: 1px solid rgba(188,140,255,0.25); }
+  .tag-orange { background: rgba(240,136,62,0.12); color: var(--orange); border: 1px solid rgba(240,136,62,0.25); }
 
-  /* ── Language Bar ── */
-  .lang-bars {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.3rem 1.5rem;
-    margin-top: 1rem;
-    transition: background 0.2s, border-color 0.2s;
-  }
+  /* Language Bar */
+  .lang-bars { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
 
-  .lang-bars:hover {
-    background: var(--card-hover);
-    border-color: #484f58;
-  }
+  .lang-bar-item { display: flex; flex-direction: column; gap: 4px; }
 
   .lang-bar-label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--muted);
-    font-family: var(--mono);
-    margin-bottom: 0.9rem;
+    display: flex; justify-content: space-between;
+    font-size: 11px; font-family: var(--font-code);
   }
 
-  .lang-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.55rem;
-  }
+  .lang-bar-label .lang-name { color: var(--text-muted); }
+  .lang-bar-label .lang-count { color: var(--text-subtle); }
 
-  .lang-name {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    width: 95px;
-    color: var(--text);
-    flex-shrink: 0;
-  }
-
-  .lang-track {
-    flex: 1;
-    height: 7px;
+  .lang-bar-track {
+    height: 4px;
     background: var(--border);
-    border-radius: 999px;
+    border-radius: 2px;
     overflow: hidden;
   }
 
-  .lang-fill {
+  .lang-bar-fill {
     height: 100%;
-    border-radius: 999px;
-    animation: grow 1.2s ease forwards;
-    transform-origin: left;
+    border-radius: 2px;
+    transition: width 1s ease;
   }
 
-  @keyframes grow {
-    from { width: 0 !important; }
-  }
-
-  .lang-count {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--muted);
-    width: 50px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  /* ── Projects ── */
+  /* ── PROJECTS ── */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
+    gap: 14px;
   }
 
   .project-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.3rem 1.4rem;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    position: relative;
-    overflow: hidden;
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 10px;
+    transition: border-color 0.2s, background 0.2s, transform 0.25s;
+    cursor: default;
   }
-
-  .project-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 100%;
-    border-radius: 3px 0 0 3px;
-    transition: opacity 0.2s;
-    opacity: 0.7;
-  }
-
-  .project-card.accent-blue::after { background: var(--blue); }
-  .project-card.accent-green::after { background: var(--green); }
-  .project-card.accent-purple::after { background: var(--purple); }
 
   .project-card:hover {
+    border-color: var(--blue);
     background: var(--card-hover);
-    border-color: #484f58;
     transform: translateY(-3px);
   }
 
-  .project-name {
-    font-family: var(--mono);
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--blue);
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+
+  .project-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
   }
 
-  .project-card.accent-green .project-name { color: var(--green); }
-  .project-card.accent-purple .project-name { color: var(--purple); }
+  .project-icon svg { width: 18px; height: 18px; }
+
+  .icon-blue { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .icon-green { background: rgba(63,185,80,0.15); color: var(--green); }
+  .icon-purple { background: rgba(188,140,255,0.15); color: var(--purple); }
+  .icon-orange { background: rgba(240,136,62,0.15); color: var(--orange); }
+
+  .project-name {
+    font-size: 14px; font-weight: 600;
+    color: var(--text);
+    font-family: var(--font-code);
+  }
 
   .project-desc {
-    font-size: 0.82rem;
-    color: #c9d1d9;
+    font-size: 13px;
+    color: var(--text-muted);
     line-height: 1.6;
     flex: 1;
   }
 
-  .project-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 0.3rem;
+  .project-footer { display: flex; align-items: center; justify-content: space-between; }
+
+  .project-lang {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 11px; font-family: var(--font-code);
+    color: var(--text-subtle);
   }
 
-  /* ── Experience & Education ── */
-  .timeline-item {
+  .lang-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot-js { background: #f7df1e; }
+  .dot-go { background: #00add8; }
+  .dot-html { background: #e34f26; }
+  .dot-ts { background: #3178c6; }
+  .dot-py { background: #3572a5; }
+
+  .relevance-badge {
+    font-size: 10px; font-family: var(--font-code); font-weight: 600;
+    padding: 2px 7px; border-radius: 4px;
+    background: rgba(63,185,80,0.12);
+    color: var(--green);
+    border: 1px solid rgba(63,185,80,0.25);
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline { display: flex; flex-direction: column; gap: 14px; }
+
+  .exp-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.3rem 1.5rem;
-    margin-bottom: 1rem;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    padding: 20px 24px;
+    display: flex; gap: 16px;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
   }
 
-  .timeline-item:hover {
+  .exp-card:hover {
+    border-color: var(--green);
     background: var(--card-hover);
-    border-color: #484f58;
-    transform: translateY(-2px);
   }
 
-  .timeline-item:last-child { margin-bottom: 0; }
-
-  .tl-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 0.3rem;
-    flex-wrap: wrap;
+  .exp-line {
+    display: flex; flex-direction: column; align-items: center;
+    flex-shrink: 0;
   }
 
-  .tl-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text);
+  .exp-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    border: 2px solid var(--card);
+    box-shadow: 0 0 0 2px var(--green);
+    margin-top: 5px;
   }
 
-  .tl-org {
-    color: var(--blue);
-    font-size: 0.85rem;
-    font-family: var(--mono);
+  .exp-content { flex: 1; }
+
+  .exp-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+
+  .exp-role { font-size: 15px; font-weight: 600; color: var(--text); }
+
+  .exp-company {
+    font-size: 13px; color: var(--blue);
+    font-family: var(--font-code); margin-top: 2px;
   }
 
-  .tl-date {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--muted);
+  .exp-date {
+    font-size: 12px; font-family: var(--font-code);
+    color: var(--text-subtle);
     white-space: nowrap;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 8px;
   }
 
-  .tl-desc {
-    font-size: 0.83rem;
-    color: #8b949e;
-    line-height: 1.65;
-    margin-top: 0.5rem;
+  .exp-bullets { margin-top: 10px; display: flex; flex-direction: column; gap: 5px; }
+
+  .exp-bullet {
+    font-size: 13px; color: var(--text-muted);
+    display: flex; gap: 8px; align-items: flex-start;
   }
 
-  .tl-desc ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+  .exp-bullet::before {
+    content: '▸';
+    color: var(--green);
+    flex-shrink: 0;
+    margin-top: 1px;
   }
 
-  .tl-desc ul li::before {
-    content: '▸ ';
-    color: var(--blue);
-    font-size: 0.75rem;
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+  /* ── EDUCATION ── */
+  .edu-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 16px; flex-wrap: wrap;
+    transition: border-color 0.2s, background 0.2s;
   }
 
-  /* ── Achievements ── */
-  .achievements-grid {
+  .edu-card:hover {
+    border-color: var(--purple);
+    background: var(--card-hover);
+  }
+
+  .edu-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(188,140,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--purple);
+    flex-shrink: 0;
+  }
+
+  .edu-icon svg { width: 22px; height: 22px; }
+
+  .edu-main { display: flex; gap: 14px; align-items: flex-start; }
+
+  .edu-degree { font-size: 15px; font-weight: 600; color: var(--text); }
+  .edu-school { font-size: 13px; color: var(--blue); font-family: var(--font-code); margin-top: 3px; }
+  .edu-detail { font-size: 12px; color: var(--text-subtle); margin-top: 3px; }
+
+  .edu-date {
+    font-size: 12px; font-family: var(--font-code);
+    color: var(--text-subtle);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 8px;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  .ach-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
   }
 
   .ach-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.1rem 1.2rem;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
-    text-align: center;
+    padding: 18px 20px;
+    display: flex; gap: 14px;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
   }
 
   .ach-card:hover {
     background: var(--card-hover);
-    border-color: #484f58;
     transform: translateY(-2px);
   }
 
-  .ach-icon {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    display: block;
+  .ach-card.blue-ach:hover { border-color: var(--blue); }
+  .ach-card.green-ach:hover { border-color: var(--green); }
+  .ach-card.purple-ach:hover { border-color: var(--purple); }
+  .ach-card.orange-ach:hover { border-color: var(--orange); }
+
+  .ach-emoji { font-size: 28px; line-height: 1; flex-shrink: 0; }
+
+  .ach-body { flex: 1; }
+  .ach-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .ach-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  .resume-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    font-family: var(--font-code);
+    color: var(--text-subtle);
+    display: flex; flex-direction: column; gap: 6px;
   }
 
-  .ach-value {
-    font-family: var(--mono);
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.2rem;
-  }
+  .resume-footer a { color: var(--blue); text-decoration: none; }
+  .resume-footer a:hover { text-decoration: underline; }
 
-  .ach-label {
-    font-size: 0.75rem;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-
-  /* ── Scrollbar ── */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  /* ── Responsive ── */
-  @media (max-width: 640px) {
-    .header-grid { grid-template-columns: 1fr; }
-    .match-badge { flex-direction: row; min-width: unset; width: 100%; justify-content: space-between; }
-    .match-number { font-size: 2rem; }
-    .header-name { font-size: 1.7rem; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .skills-grid { grid-template-columns: 1fr 1fr; }
-    .achievements-grid { grid-template-columns: 1fr 1fr; }
-    .page { padding: 1rem 1rem 3rem; }
-  }
-
-  /* ── Print ── */
+  /* ── PRINT ── */
   @media print {
     body { background: #fff; color: #111; font-size: 12px; }
-    .page { max-width: 100%; padding: 0.5rem 1rem; }
-    header, .card, .skill-group, .project-card, .timeline-item, .ach-card, .lang-bars {
-      background: #f9f9f9 !important;
-      border-color: #ddd !important;
-      box-shadow: none !important;
+    .page-wrapper { padding: 16px; max-width: 100%; }
+    .header, .summary-card, .skill-category, .project-card,
+    .exp-card, .edu-card, .ach-card {
+      background: #fff;
+      border-color: #ccc;
+      box-shadow: none;
       break-inside: avoid;
     }
-    header::before { display: none; }
-    * { transform: none !important; animation: none !important; }
-    .header-name { -webkit-text-fill-color: #1a1a2e; background: none; color: #1a1a2e; }
-    .section-title, .tl-org, .project-name { color: #2563eb !important; }
-    .muted, .tl-date, .tl-desc, .lang-count, .ach-label { color: #555 !important; }
-    .lang-fill { animation: none !important; }
-    a { color: #2563eb !important; text-decoration: none; }
-    .match-bar-fill { animation: none !important; }
+    .header::before { display: none; }
+    :root {
+      --bg: #fff; --card: #fff; --card-hover: #f9f9f9;
+      --border: #ccc; --text: #111; --text-muted: #444; --text-subtle: #666;
+    }
+    .match-badge { border-color: #ccc; background: #f5f5f5; }
+    .lang-bar-track { background: #e5e5e5; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .header { padding: 24px 20px; }
+    .header-inner { flex-direction: column; }
+    .match-badge { width: 100%; flex-direction: row; align-items: center; justify-content: space-between; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .ach-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .name-block h1 { font-size: 22px; }
+  }
+
+  @media (max-width: 420px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .avatar { width: 56px; height: 56px; font-size: 18px; }
   }
 </style>
 </head>
 <body>
-<div class="page">
+<div class="page-wrapper">
 
-  <!-- ══════════════ HEADER ══════════════ -->
-  <header>
-    <div class="header-grid">
-      <div>
-        <h1 class="header-name">Shivakumar</h1>
-        <p class="header-role">// <span>Software Engineer</span> · Backend & AI Tooling</p>
-        <div class="contact-row">
-          <a href="https://github.com/shivakumar2006" target="_blank">⌥ github.com/shivakumar2006</a>
-          <span>📍 India</span>
-          <span>🎯 Applying → Visa Inc.</span>
+  <!-- ── HEADER ── -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="avatar-name">
+          <div class="avatar">SK</div>
+          <div class="name-block">
+            <h1>Shivakumar</h1>
+            <div class="role">// software-engineer · backend · go · js</div>
+          </div>
+        </div>
+        <div class="contact-links">
+          <a href="https://github.com/shivakumar2006" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/shivakumar2006
+          </a>
+          <a href="mailto:shivakumar2006@example.com">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 2h12.5c.97 0 1.75.78 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5C0 2.78.78 2 1.75 2zM1.5 4.16v8.09c0 .14.11.25.25.25h12.5c.14 0 .25-.11.25-.25V4.16L8 9.51 1.5 4.16zm13-1.41L8 8.49 1.5 2.75h13z"/></svg>
+            shivakumar2006@email.com
+          </a>
+          <a href="#">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.669 10.735c-.063.083-.19.096-.273.032a5.11 5.11 0 01-.72-.528 4.78 4.78 0 01-.514-.55c-.266.35-.525.61-.773.793-.61.446-1.348.533-2.196.289C5.7 10.339 4.836 9.41 4.34 8.09 3.84 6.754 3.89 5.378 4.477 4.26c.274-.515.668-.918 1.147-1.133.48-.217 1.013-.221 1.54-.013.524.207.97.647 1.263 1.22l.058.115a.177.177 0 01-.08.236l-1.031.518a.177.177 0 01-.236-.08l-.057-.112c-.152-.3-.376-.517-.612-.612a.677.677 0 00-.618.002c-.234.106-.436.33-.578.619-.47.944-.432 2.016.1 3.174.417.9.973 1.576 1.592 1.77.409.128.744.074 1.01-.112.202-.14.395-.36.574-.647l.065-.108c-1.052-1.08-1.697-2.39-1.697-3.5 0-.139.011-.276.033-.41l.007-.046a.177.177 0 01.178-.149h1.167a.177.177 0 01.177.195l-.009.075c-.014.11-.021.222-.021.335 0 .82.42 1.73 1.05 2.447.188-.516.295-1.117.295-1.778 0-.107-.004-.213-.013-.317a.177.177 0 01.161-.193l1.092-.12a.177.177 0 01.194.161c.016.152.024.308.024.469 0 1.29-.392 2.42-1.029 3.223z"/></svg>
+            India
+          </a>
         </div>
       </div>
+
+      <!-- Match Score -->
       <div class="match-badge">
-        <span class="match-label">Match Score</span>
-        <span class="match-number">54</span>
-        <span class="match-total">/ 100</span>
-        <div class="match-bar"><div class="match-bar-fill"></div></div>
-        <span class="match-role-tag">Visa · SWE</span>
+        <div class="label">Visa Inc. Match</div>
+        <div class="score-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="track" cx="36" cy="36" r="30"/>
+            <circle class="fill" cx="36" cy="36" r="30"/>
+          </svg>
+          <div class="score-text">
+            <span class="score-num">58</span>
+            <span class="score-denom">/100</span>
+          </div>
+        </div>
+        <div class="match-label">⚡ Good Fit</div>
       </div>
     </div>
   </header>
 
-  <!-- ══════════════ SUMMARY ══════════════ -->
-  <section>
-    <div class="section-header">
-      <span class="section-title">Summary</span>
-      <div class="section-line"></div>
+  <!-- ── SUMMARY ── -->
+  <section class="section">
+    <div class="section-title">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm7.25 10.32V4.5a.25.25 0 00-.25-.25H2.5v9h2.758a3.75 3.75 0 011.992.57zM8.75 13.37a3.75 3.75 0 011.992-.57H13.5v-9h-4.5a.25.25 0 00-.25.25v7.57z"/></svg>
+      Professional Summary
     </div>
-    <div class="card">
-      <p class="summary-text">
-        Passionate software developer with a strong foundation in <strong>JavaScript (45 repos)</strong> and growing expertise in <strong>Go (13 repos)</strong> — the primary backend language at Visa Inc. Experienced in building AI-powered applications including an <strong>AI code reviewer</strong>, <strong>AI diagnosis app</strong>, and an <strong>AI interior design tool</strong>, demonstrating the ability to integrate modern LLM capabilities into real products. Actively participates in <strong>hackathons</strong> through HackIndia, reinforcing collaborative engineering under pressure. Seeking to bring clean, maintainable code and a fast-learning mindset to Visa's backend engineering teams.
-      </p>
-    </div>
-  </section>
-
-  <!-- ══════════════ SKILLS ══════════════ -->
-  <section>
-    <div class="section-header">
-      <span class="section-title">Skills</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <div class="skill-group-title blue">Backend Languages</div>
-        <div class="skill-tags">
-          <span class="tag tag-blue">Go</span>
-          <span class="tag tag-blue">JavaScript</span>
-          <span class="tag tag-blue">TypeScript</span>
-          <span class="tag tag-blue">Python</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title green">Frontend & Web</div>
-        <div class="skill-tags">
-          <span class="tag tag-green">HTML5</span>
-          <span class="tag tag-green">CSS3</span>
-          <span class="tag tag-green">React</span>
-          <span class="tag tag-green">Node.js</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title purple">AI & Tooling</div>
-        <div class="skill-tags">
-          <span class="tag tag-purple">AI Integration</span>
-          <span class="tag tag-purple">Code Review AI</span>
-          <span class="tag tag-purple">LLM APIs</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title orange">Engineering Practices</div>
-        <div class="skill-tags">
-          <span class="tag tag-orange">REST APIs</span>
-          <span class="tag tag-orange">Git</span>
-          <span class="tag tag-orange">Hackathons</span>
-          <span class="tag tag-orange">Code Reviews</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Language Bars -->
-    <div class="lang-bars">
-      <div class="lang-bar-label">GitHub Language Breakdown</div>
-      <div class="lang-row">
-        <span class="lang-name">JavaScript</span>
-        <div class="lang-track"><div class="lang-fill" style="width:62%; background: linear-gradient(90deg, #f0db4f, #f0883e);"></div></div>
-        <span class="lang-count">45 repos</span>
-      </div>
-      <div class="lang-row">
-        <span class="lang-name">Go</span>
-        <div class="lang-track"><div class="lang-fill" style="width:28%; background: linear-gradient(90deg, #00acd7, #58a6ff);"></div></div>
-        <span class="lang-count">13 repos</span>
-      </div>
-      <div class="lang-row">
-        <span class="lang-name">HTML</span>
-        <div class="lang-track"><div class="lang-fill" style="width:10%; background: linear-gradient(90deg, #e34c26, #f0883e);"></div></div>
-        <span class="lang-count">5 repos</span>
-      </div>
-      <div class="lang-row">
-        <span class="lang-name">TypeScript</span>
-        <div class="lang-track"><div class="lang-fill" style="width:6%; background: linear-gradient(90deg, #3178c6, #bc8cff);"></div></div>
-        <span class="lang-count">3 repos</span>
-      </div>
-      <div class="lang-row">
-        <span class="lang-name">CSS</span>
-        <div class="lang-track"><div class="lang-fill" style="width:6%; background: linear-gradient(90deg, #264de4, #58a6ff);"></div></div>
-        <span class="lang-count">3 repos</span>
-      </div>
-      <div class="lang-row">
-        <span class="lang-name">Python</span>
-        <div class="lang-track"><div class="lang-fill" style="width:6%; background: linear-gradient(90deg, #3572A5, #3fb950);"></div></div>
-        <span class="lang-count">3 repos</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════ PROJECTS ══════════════ -->
-  <section>
-    <div class="section-header">
-      <span class="section-title">Featured Projects</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="projects-grid">
-
-      <div class="project-card accent-blue">
-        <div class="project-name">ai-code-reviewer</div>
-        <p class="project-desc">
-          An AI-powered code review tool built in JavaScript that leverages large language model APIs to automatically analyze code quality, flag potential bugs, and suggest improvements — directly aligned with Visa's emphasis on code correctness and maintainability.
-        </p>
-        <div class="project-footer">
-          <span class="tag tag-blue">JavaScript</span>
-          <span class="tag tag-muted">AI / LLM</span>
-        </div>
-      </div>
-
-      <div class="project-card accent-green">
-        <div class="project-name">API-GO</div>
-        <p class="project-desc">
-          A Go-based REST API project demonstrating backend service construction using Go's net/http or popular frameworks. Showcases understanding of routing, request handling, and service architecture — core skills for Visa's Go-based microservices.
-        </p>
-        <div class="project-footer">
-          <span class="tag tag-green">Go</span>
-          <span class="tag tag-muted">REST API</span>
-        </div>
-      </div>
-
-      <div class="project-card accent-purple">
-        <div class="project-name">auto-checkpoint</div>
-        <p class="project-desc">
-          A Go utility for automated checkpointing, reflecting deeper backend systems thinking — state management, reliability, and automated process control. Demonstrates the ability to write production-oriented Go code beyond simple scripting.
-        </p>
-        <div class="project-footer">
-          <span class="tag tag-purple">Go</span>
-          <span class="tag tag-muted">Automation</span>
-        </div>
-      </div>
-
-      <div class="project-card accent-blue">
-        <div class="project-name">ai-diagnosis-app</div>
-        <p class="project-desc">
-          A JavaScript application integrating AI capabilities to provide intelligent diagnostic outputs. Demonstrates experience with async data flows, API consumption, and building user-facing AI products with real-world applicability.
-        </p>
-        <div class="project-footer">
-          <span class="tag tag-blue">JavaScript</span>
-          <span class="tag tag-muted">AI / Health</span>
-        </div>
-      </div>
-
-      <div class="project-card accent-green">
-        <div class="project-name">amazon-clone</div>
-        <p class="project-desc">
-          A full-featured e-commerce clone in JavaScript replicating core Amazon UX/UI flows — cart management, product listings, and state handling. Highlights strong frontend JavaScript architecture and attention to real-world product design.
-        </p>
-        <div class="project-footer">
-          <span class="tag tag-green">JavaScript</span>
-          <span class="tag tag-muted">Full-Stack</span>
-        </div>
-      </div>
-
-      <div class="project-card accent-purple">
-        <div class="project-name">ai-interior-design</div>
-        <p class="project-desc">
-          Creative AI application that uses generative models to provide interior design suggestions. Demonstrates proficiency in integrating third-party AI APIs, handling image-based data, and building engaging product experiences.
-        </p>
-        <div class="project-footer">
-          <span class="tag tag-purple">JavaScript</span>
-          <span class="tag tag-muted">Generative AI</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════ EXPERIENCE ══════════════ -->
-  <section>
-    <div class="section-header">
-      <span class="section-title">Experience</span>
-      <div class="section-line"></div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="tl-top">
-        <div>
-          <div class="tl-title">Hackathon Participant — Team GODvenus</div>
-          <div class="tl-org">HackIndia · Spark 4, 6, 7 (NCR &amp; North Region)</div>
-        </div>
-        <span class="tl-date">2024 – Present</span>
-      </div>
-      <div class="tl-desc">
-        <ul>
-          <li>Competed across multiple HackIndia regional rounds (Spark 4 NCR East, Spark 6 NCR Central, Spark 7 North) as part of team GODvenus, demonstrating consistent commitment to competitive engineering.</li>
-          <li>Collaborated in cross-functional teams under tight deadlines, rapidly prototyping solutions and iterating on designs — experience translating directly to Agile sprint cycles.</li>
-          <li>Also participated independently in the OpenClaw hackathon under personal handle, showcasing initiative beyond team settings.</li>
-          <li>Developed problem-solving instincts, code collaboration via Git, and end-to-end feature delivery under real-world constraints.</li>
+    <div class="summary-card">
+      Driven software engineer with a strong foundation in <span class="highlight">JavaScript (45 repos)</span> and growing expertise in <span class="highlight">Go (13 repos)</span> — the primary backend language at Visa Inc. Experienced in building <span class="highlight-purple">AI-powered applications</span> (ai-code-reviewer, ai-diagnosis-app, ai-interior-design), RESTful APIs (<span class="
