@@ -134,7 +134,7 @@ LIMIT 20
 ### Chat Agent
 
 ```
-You: "Aaj kya karna hai mujhe?"
+You: "What should i work in today?"
 
 CareerCraft: Based on your real data:
 
@@ -154,7 +154,7 @@ Start with the auth bug — you have a clear window 9-11 AM.
 ```
 
 ```
-You: "Mera best Go project konsa hai resume ke liye?"
+You: "Which is the best Go project for my resume?"
 
 CareerCraft: Querying your GitHub via Coral SQL...
 
@@ -290,8 +290,8 @@ NOTION_TOKEN=your_notion_token
 
 ## Author
 
-**Shiva Kumar** — [@shivakumar2006](https://github.com/shivakumar2006)
+**Shiva** — [@shivakumar2006](https://github.com/shivakumar2006)
 
-BCA Final Year · Hackathon builder · 1700+ GitHub commits · Go developer
+Hackathon builder · Go developer
 
 *WeMakeDevs × Coral · May 2026*
