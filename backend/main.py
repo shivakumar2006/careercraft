@@ -32,15 +32,11 @@ app.add_middleware(
 )
 
 
-# ── REQUEST MODELS ───────────────────────────────────────────
-
 class JDRequest(BaseModel):
     jd: str
     company: str
     company_org: str = ""
 
-
-# ── MAIN ANALYZE ENDPOINT ────────────────────────────────────
 
 @app.post("/analyze")
 async def analyze(req: JDRequest):
@@ -143,8 +139,6 @@ async def analyze(req: JDRequest):
     return StreamingResponse(stream(), media_type="text/event-stream")
 
 
-# ── FILE ENDPOINTS ───────────────────────────────────────────
-
 @app.get("/files")
 async def list_files():
     """List all files in output directory"""
@@ -213,8 +207,6 @@ async def chat_endpoint(req: ChatRequest):
 async def health():
     return {"status": "ok", "version": "1.0.0"}
 
-
-# ── RUN ──────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     import uvicorn
