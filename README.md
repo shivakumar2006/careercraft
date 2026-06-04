@@ -56,7 +56,7 @@ CareerCraft is an AI-powered personal career agent that uses **Coral SQL** to qu
 
 Paste any job description. CareerCraft:
 
-1. **Queries your GitHub** — 81 SQL queries across repos, languages, architecture
+1. **Queries your GitHub** — 83 SQL queries across repos, languages, architecture
 2. **Analyzes your fit** — match score, skill gaps, company insights
 3. **Generates tailored resume** — beautiful HTML, your actual projects
 4. **Writes cover letter** — specific to the role, references real work
@@ -273,7 +273,7 @@ NOTION_TOKEN=your_notion_token
 |----------|-------------|
 | **Potential Impact** | Every developer job-hunts. Every developer loses time to scattered tools. This solves both. |
 | **Creativity & Originality** | Career intelligence + multi-source agent — no one else built this angle |
-| **Best Use of Coral** | 5 sources, 81 queries, cross-source JOINs, custom source spec |
+| **Best Use of Coral** | 5 sources, 83 queries, cross-source JOINs, custom source spec |
 | **Technical Implementation** | Streaming FastAPI, Redux state, real-time terminal UI, Notion write-back |
 | **Aesthetics & UX** | Dark terminal UI, animated score ring, interactive prep checklist |
 | **Learning & Growth** | First time using Coral, custom source spec, multi-source agent architecture |
