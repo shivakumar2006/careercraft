@@ -121,7 +121,7 @@ LIMIT 20
 
 | Source | Tables | What It Unlocks |
 |--------|--------|-----------------|
-| **GitHub** | 30+ queries | Repos, languages, architecture, package.json, size, recency |
+| **GitHub** | 50+ queries | Repos, languages, architecture, package.json, size, recency |
 | **Linear** | issues, projects, teams, users | Tasks, priorities, deadlines, team structure |
 | **Notion** | pages, search | Notes, docs, project context |
 | **Google Calendar** | events, schedule | Today's meetings, week overview, scheduling density |
