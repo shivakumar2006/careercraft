@@ -273,7 +273,7 @@ NOTION_TOKEN=your_notion_token
 |----------|-------------|
 | **Potential Impact** | Every developer job-hunts. Every developer loses time to scattered tools. This solves both. |
 | **Creativity & Originality** | Career intelligence + multi-source agent — no one else built this angle |
-| **Best Use of Coral** | 7 sources, 30+ queries, cross-source JOINs, custom source spec |
+| **Best Use of Coral** | 5 sources, 81 queries, cross-source JOINs, custom source spec |
 | **Technical Implementation** | Streaming FastAPI, Redux state, real-time terminal UI, Notion write-back |
 | **Aesthetics & UX** | Dark terminal UI, animated score ring, interactive prep checklist |
 | **Learning & Growth** | First time using Coral, custom source spec, multi-source agent architecture |
