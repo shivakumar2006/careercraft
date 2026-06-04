@@ -40,7 +40,7 @@ CareerCraft is an AI-powered personal career agent that uses **Coral SQL** to qu
 → Gives you a prioritized plan for the day
 
 "Which is my best Go project for a Zerodha application?"
-→ Queries 30+ GitHub data points — size, recency, architecture
+→ Queries 50+ GitHub data points — size, recency, architecture
 → Ranks your projects with specific reasons
 
 "What emails did I miss today?"
