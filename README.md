@@ -56,7 +56,7 @@ CareerCraft is an AI-powered personal career agent that uses **Coral SQL** to qu
 
 Paste any job description. CareerCraft:
 
-1. **Queries your GitHub** — 83 SQL queries across repos, languages, architecture
+1. **Queries your GitHub** — 50+ SQL queries across repos, languages, architecture
 2. **Analyzes your fit** — match score, skill gaps, company insights
 3. **Generates tailored resume** — beautiful HTML, your actual projects
 4. **Writes cover letter** — specific to the role, references real work
